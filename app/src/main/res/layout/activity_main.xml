@@ -96,16 +96,4 @@
         android:layout_above="@+id/buttonSeConnecter"
         android:layout_alignStart="@+id/mdp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Erreur de connexion"
-        android:id="@+id/tw_ErreurConnexion"
-        android:layout_above="@+id/tw_mdpOublie"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="17dp"
-        android:layout_alignEnd="@+id/buttonSeConnecter"
-        android:textColor="#f70505"
-        android:visibility="visible" />
-
 </RelativeLayout>
