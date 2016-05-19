@@ -15,7 +15,7 @@
         android:text="Connexion"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:textSize="28dp"
+        android:textSize="28sp"
         android:id="@+id/textView" />
 
     <TextView
@@ -25,7 +25,7 @@
         android:id="@+id/tw_identifiant"
         android:layout_marginTop="28dp"
         android:textAlignment="textStart"
-        android:textSize="24dp"
+        android:textSize="24sp"
         android:layout_below="@+id/textView"
         android:layout_alignParentStart="true" />
 
@@ -44,7 +44,7 @@
         android:text="Mot de passe : "
         android:id="@+id/tw_mdp"
         android:textAlignment="textStart"
-        android:textSize="24dp"
+        android:textSize="24sp"
         android:layout_above="@+id/mdp"
         android:layout_alignStart="@+id/identifiant" />
 
@@ -67,7 +67,7 @@
         android:minWidth="250dp"
         android:textColor="@color/abc_primary_text_disable_only_material_dark"
         android:background="#88dcdc"
-        android:textSize="24dp"
+        android:textSize="24sp"
         android:textStyle="bold"
         android:layout_above="@+id/tw_mdpOublie"
         android:layout_alignStart="@+id/cB_Memoriser"
@@ -95,5 +95,17 @@
         android:textSize="24dp"
         android:layout_above="@+id/buttonSeConnecter"
         android:layout_alignStart="@+id/mdp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Erreur de connexion"
+        android:id="@+id/tw_ErreurConnexion"
+        android:layout_above="@+id/tw_mdpOublie"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="17dp"
+        android:layout_alignEnd="@+id/buttonSeConnecter"
+        android:textColor="#f70505"
+        android:visibility="visible" />
 
 </RelativeLayout>
