@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="16dp"
+    tools:context="com.viki.vikiapplication.MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Connexion"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:textSize="28dp"
+        android:id="@+id/textView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Identifiant :"
+        android:id="@+id/tw_identifiant"
+        android:layout_marginTop="28dp"
+        android:textAlignment="textStart"
+        android:textSize="24dp"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/identifiant"
+        android:minHeight="30dp"
+        android:minWidth="350dp"
+        android:layout_below="@+id/tw_identifiant"
+        android:layout_alignStart="@+id/tw_identifiant" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mot de passe : "
+        android:id="@+id/tw_mdp"
+        android:textAlignment="textStart"
+        android:textSize="24dp"
+        android:layout_above="@+id/mdp"
+        android:layout_alignStart="@+id/identifiant" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mdp"
+        android:minHeight="30dp"
+        android:minWidth="350dp"
+        android:password="true"
+        android:layout_centerVertical="true"
+        android:layout_alignStart="@+id/tw_mdp"
+        android:foregroundTint="#0ba3f5" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Se connecter"
+        android:id="@+id/buttonSeConnecter"
+        android:minWidth="250dp"
+        android:textColor="@color/abc_primary_text_disable_only_material_dark"
+        android:background="#88dcdc"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        android:layout_above="@+id/tw_mdpOublie"
+        android:layout_alignStart="@+id/cB_Memoriser"
+        android:layout_marginBottom="43dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mot de passe oublié ?"
+        android:id="@+id/tw_mdpOublie"
+        android:textAlignment="textStart"
+        android:textSize="16dp"
+        android:textColor="#323fb6"
+        android:clickable="true"
+        android:contextClickable="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/buttonSeConnecter" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rester connecté "
+        android:id="@+id/cB_Memoriser"
+        android:checked="false"
+        android:textSize="24dp"
+        android:layout_above="@+id/buttonSeConnecter"
+        android:layout_alignStart="@+id/mdp" />
+
+</RelativeLayout>
