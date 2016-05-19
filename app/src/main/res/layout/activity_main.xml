@@ -69,9 +69,9 @@
         android:background="#88dcdc"
         android:textSize="24sp"
         android:textStyle="bold"
+        android:layout_marginBottom="68dp"
         android:layout_above="@+id/tw_mdpOublie"
-        android:layout_alignStart="@+id/cB_Memoriser"
-        android:layout_marginBottom="43dp" />
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"

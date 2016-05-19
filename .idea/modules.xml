@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ViKiApplication.iml" filepath="$PROJECT_DIR$/ViKiApplication.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/vikimobile.iml" filepath="$PROJECT_DIR$/vikimobile.iml" />
     </modules>
   </component>
 </project>
