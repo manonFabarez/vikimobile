@@ -25,7 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Identifiant :"
-        android:id="@+id/tw_identifiant"
+        android:id="@+id/tw_ident"
         android:layout_marginTop="28dp"
         android:textAlignment="textStart"
         android:textSize="24sp"
@@ -36,11 +36,11 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/identifiant"
+        android:id="@+id/user_ident"
         android:minHeight="30dp"
         android:minWidth="350dp"
-        android:layout_below="@+id/tw_identifiant"
-        android:layout_alignStart="@+id/tw_identifiant"
+        android:layout_below="@+id/tw_ident"
+        android:layout_alignStart="@+id/tw_ident"
         android:textColor="#284051" />
 
     <TextView
@@ -50,14 +50,14 @@
         android:id="@+id/tw_mdp"
         android:textAlignment="textStart"
         android:textSize="24sp"
-        android:layout_above="@+id/mdp"
-        android:layout_alignStart="@+id/identifiant"
+        android:layout_above="@+id/user_pass"
+        android:layout_alignStart="@+id/user_ident"
         android:textColor="#284051" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/mdp"
+        android:id="@+id/user_pass"
         android:minHeight="30dp"
         android:minWidth="350dp"
         android:password="true"
