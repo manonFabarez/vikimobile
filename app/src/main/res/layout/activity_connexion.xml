@@ -7,16 +7,19 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="16dp"
-    tools:context="com.viki.vikiapplication.MainActivity">
+    tools:context=".Connexion"
+    android:background="#ffffff">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Connexion"
+        android:textSize="28sp"
+        android:id="@+id/textView"
+        android:textColor="#8e0000"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:textSize="28sp"
-        android:id="@+id/textView" />
+        android:layout_marginTop="20dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -27,7 +30,8 @@
         android:textAlignment="textStart"
         android:textSize="24sp"
         android:layout_below="@+id/textView"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textColor="#284051" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -36,7 +40,8 @@
         android:minHeight="30dp"
         android:minWidth="350dp"
         android:layout_below="@+id/tw_identifiant"
-        android:layout_alignStart="@+id/tw_identifiant" />
+        android:layout_alignStart="@+id/tw_identifiant"
+        android:textColor="#284051" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -46,7 +51,8 @@
         android:textAlignment="textStart"
         android:textSize="24sp"
         android:layout_above="@+id/mdp"
-        android:layout_alignStart="@+id/identifiant" />
+        android:layout_alignStart="@+id/identifiant"
+        android:textColor="#284051" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -57,7 +63,8 @@
         android:password="true"
         android:layout_centerVertical="true"
         android:layout_alignStart="@+id/tw_mdp"
-        android:foregroundTint="#0ba3f5" />
+        android:foregroundTint="#0ba3f5"
+        android:textColor="#284051" />
 
     <Button
         android:layout_width="wrap_content"
@@ -69,9 +76,12 @@
         android:background="#88dcdc"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:layout_marginBottom="68dp"
+        android:layout_marginBottom="46dp"
         android:layout_above="@+id/tw_mdpOublie"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:clickable="true"
+        android:contextClickable="true"
+        android:onClick="buttonOnClick" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -79,12 +89,12 @@
         android:text="Mot de passe oublié ?"
         android:id="@+id/tw_mdpOublie"
         android:textAlignment="textStart"
-        android:textSize="16dp"
-        android:textColor="#323fb6"
+        android:textSize="20dp"
+        android:textColor="#8e0000"
         android:clickable="true"
         android:contextClickable="true"
         android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/buttonSeConnecter" />
+        android:layout_centerHorizontal="true" />
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -93,7 +103,9 @@
         android:id="@+id/cB_Memoriser"
         android:checked="false"
         android:textSize="24dp"
+        android:textColor="#284051"
         android:layout_above="@+id/buttonSeConnecter"
-        android:layout_alignStart="@+id/mdp" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="5dp" />
 
 </RelativeLayout>

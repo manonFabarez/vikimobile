@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    android:padding="10dp"
+    tools:context="com.viki.vikiapplication.Menu"
+    android:clickable="true"
+    android:background="#ffffff">
+
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:rowCount="6"
+        android:columnCount="6"
+        android:id="@+id/gridlayout_menu"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true">
+
+        <ImageButton
+            android:layout_width="145dp"
+            android:layout_height="145dp"
+            android:id="@+id/bt_menu_programme"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:src="@mipmap/bt_menu_programme1"
+            android:adjustViewBounds="false"
+            android:scaleType="fitCenter"
+            android:background="#ffffff"
+            android:clickable="true"
+            android:contextClickable="true"
+            android:onClick="buttonOnClick" />
+
+        <ImageButton
+            android:layout_width="145dp"
+            android:layout_height="145dp"
+            android:id="@+id/bt_menu_video"
+            android:layout_row="0"
+            android:layout_column="5"
+            android:src="@mipmap/bt_menu_video1"
+            android:background="#ffffff"
+            android:clickable="true"
+            android:adjustViewBounds="false"
+            android:scaleType="fitCenter"
+            android:contextClickable="true"
+            android:onClick="buttonOnClick" />
+
+        <ImageButton
+            android:layout_width="145dp"
+            android:layout_height="145dp"
+            android:id="@+id/bt_menu_seance"
+            android:layout_row="2"
+            android:layout_column="0"
+            android:src="@mipmap/bt_menu_seance1"
+            android:background="#ffffff"
+            android:clickable="true"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="false"
+            android:contextClickable="true"
+            android:onClick="buttonOnClick" />
+
+        <ImageButton
+            android:layout_width="145dp"
+            android:layout_height="145dp"
+            android:id="@+id/bt_menu_resultat"
+            android:layout_row="2"
+            android:layout_column="5"
+            android:src="@mipmap/bt_menu_resultat1"
+            android:scaleType="fitCenter"
+            android:background="#ffffff"
+            android:clickable="true"
+            android:adjustViewBounds="false"
+            android:contextClickable="true"
+            android:onClick="buttonOnClick" />
+
+        <ImageButton
+            android:layout_width="145dp"
+            android:layout_height="145dp"
+            android:id="@+id/bt_menu_conseil"
+            android:layout_row="5"
+            android:layout_column="0"
+            android:src="@mipmap/bt_menu_conseil1"
+            android:background="#ffffff"
+            android:clickable="true"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="false"
+            android:contextClickable="true"
+            android:onClick="buttonOnClick" />
+
+        <ImageButton
+            android:layout_width="145dp"
+            android:layout_height="145dp"
+            android:id="@+id/bt_menu_notif"
+            android:layout_row="5"
+            android:layout_column="5"
+            android:src="@mipmap/bt_menu_notif1"
+            android:background="#ffffff"
+            android:clickable="true"
+            android:adjustViewBounds="false"
+            android:scaleType="fitCenter"
+            android:contextClickable="true"
+            android:onClick="buttonOnClick" />
+    </GridLayout>
+
+    <ImageView
+        android:layout_width="130dp"
+        android:layout_height="100dp"
+        android:id="@+id/imgV_menu_titre"
+        android:layout_row="0"
+        android:layout_column="0"
+        android:src="@mipmap/menu_titre"
+        android:layout_above="@+id/gridlayout_menu"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="5dp" />
+
+</RelativeLayout>
