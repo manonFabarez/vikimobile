@@ -12,35 +12,23 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Mot de passe oublié"
-        android:textSize="28sp"
-        android:id="@+id/textView2"
-        android:textColor="#8e0000"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="Adesse email :"
         android:id="@+id/tv_mdpOublie_Email"
         android:textAlignment="textStart"
         android:textSize="24sp"
         android:layout_marginTop="25dp"
-        android:layout_below="@+id/textView2"
         android:layout_alignParentStart="true"
         android:textColor="#284051" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/et_MdpOublie_email"
+        android:id="@+id/et_MdpO_email"
         android:minHeight="30dp"
         android:minWidth="350dp"
         android:layout_below="@+id/tv_mdpOublie_Email"
         android:layout_centerHorizontal="true"
-        android:textColor="#284051" />
+        android:textColor="#8e0000" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -49,7 +37,7 @@
         android:id="@+id/tv_MdpOublie_dateNaiss"
         android:textAlignment="textStart"
         android:textSize="24sp"
-        android:layout_below="@+id/et_MdpOublie_email"
+        android:layout_below="@+id/et_MdpO_email"
         android:layout_alignParentStart="true"
         android:layout_marginTop="25dp"
         android:textColor="#284051" />
@@ -57,14 +45,14 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/et_MdpOublie_dateNaiss"
+        android:id="@+id/et_MdpO_dateNais"
         android:minHeight="30dp"
         android:minWidth="350dp"
-        android:password="true"
+        android:password="false"
         android:foregroundTint="#0ba3f5"
         android:layout_below="@+id/tv_MdpOublie_dateNaiss"
         android:layout_centerHorizontal="true"
-        android:textColor="#284051" />
+        android:textColor="#8e0000" />
 
     <Button
         android:layout_width="wrap_content"
@@ -76,37 +64,10 @@
         android:background="#88dcdc"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:layout_marginTop="25dp"
-        android:layout_below="@+id/et_MdpOublie_dateNaiss"
-        android:layout_alignEnd="@+id/textView2"
         android:clickable="true"
-        android:contextClickable="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Information : "
-        android:id="@+id/textView3"
-        android:textAlignment="textStart"
-        android:textSize="24sp"
-        android:layout_marginTop="25dp"
-        android:layout_below="@+id/button"
+        android:contextClickable="true"
+        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:textColor="#8e0000" />
+        android:onClick="btValMDPOonClik" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Votre mot de passe temporaire à été envoyé sur votre mail. "
-        android:id="@+id/textView4"
-        android:textAlignment="textStart"
-        android:textSize="24sp"
-        android:textColor="#284051"
-        android:layout_below="@+id/textView3"
-        android:layout_alignParentStart="false"
-        android:layout_alignEnd="@+id/button"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="40dp"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="15dp" />
 </RelativeLayout>

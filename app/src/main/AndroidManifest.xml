@@ -14,22 +14,22 @@
         android:label="ViKi"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Connexion">
+        <activity android:name=".Connexion" android:screenOrientation="portrait" android:label = "Connexion">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Menu" />
-        <activity android:name=".ChangerMDP" android:label ="Changer son mot de passe" />
-        <activity android:name=".MdpOublie"  android:label ="Mot de passe oublié"/>
-        <activity android:name=".Programme"  android:label ="Mon programme" />
-        <activity android:name=".Notification" android:label ="A propos" />
-        <activity android:name=".Video"  android:label ="Exemples en vidéo" />
-        <activity android:name=".Resultat"  android:label ="Mes résultats" />
-        <activity android:name=".Conseil"  android:label ="Conseils"/>
-        <activity android:name=".Seance"  android:label ="Mes séances"/>
+        <activity android:name=".Menu" android:screenOrientation="portrait"/>
+        <activity android:name=".ChangerMDP" android:screenOrientation="portrait" android:label ="Changer son mot de passe" />
+        <activity android:name=".MdpOublie"  android:screenOrientation="portrait" android:label ="Mot de passe oublié"/>
+        <activity android:name=".Programme"  android:screenOrientation="portrait" android:label ="Mon programme" />
+        <activity android:name=".Notification" android:screenOrientation="portrait" android:label ="A propos" />
+        <activity android:name=".Video"  android:screenOrientation="portrait" android:label ="Exemples en vidéo" />
+        <activity android:name=".Resultat"  android:screenOrientation="portrait" android:label ="Mes résultats" />
+        <activity android:name=".Conseil"  android:screenOrientation="portrait" android:label ="Conseils"/>
+        <activity android:name=".Seance"  android:screenOrientation="portrait" android:label ="Mes séances"/>
     </application>
 
 </manifest>

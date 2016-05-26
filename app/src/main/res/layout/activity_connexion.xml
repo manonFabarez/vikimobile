@@ -41,7 +41,7 @@
         android:minWidth="350dp"
         android:layout_below="@+id/tw_ident"
         android:layout_alignStart="@+id/tw_ident"
-        android:textColor="#284051" />
+        android:textColor="#8e0000" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -64,7 +64,7 @@
         android:layout_centerVertical="true"
         android:layout_alignStart="@+id/tw_mdp"
         android:foregroundTint="#0ba3f5"
-        android:textColor="#284051" />
+        android:textColor="#8e0000" />
 
     <Button
         android:layout_width="wrap_content"
@@ -94,7 +94,8 @@
         android:clickable="true"
         android:contextClickable="true"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="forgetOnClick" />
 
     <CheckBox
         android:layout_width="wrap_content"

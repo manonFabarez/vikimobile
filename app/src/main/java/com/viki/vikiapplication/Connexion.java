@@ -35,8 +35,11 @@ public class Connexion extends Activity {
         //Exécution tache en arrière plan + paramètres necessaires à la taches
         backgroundTask.execute(method,login_ident,login_pass);
 
-        Intent i = new Intent(getApplicationContext(),Menu.class);
-        startActivity(i);
+    }
+
+    public void forgetOnClick(View V) {
+        Intent n = new Intent(getApplicationContext(),MdpOublie.class);
+        startActivity(n);
     }
 }
 
