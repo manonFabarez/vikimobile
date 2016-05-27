@@ -66,8 +66,9 @@
         android:textStyle="bold"
         android:clickable="true"
         android:contextClickable="true"
-        android:layout_centerVertical="true"
+        android:onClick="btValMDPOonClik"
+        android:layout_below="@+id/et_MdpO_dateNais"
         android:layout_centerHorizontal="true"
-        android:onClick="btValMDPOonClik" />
+        android:layout_marginTop="98dp" />
 
 </RelativeLayout>
