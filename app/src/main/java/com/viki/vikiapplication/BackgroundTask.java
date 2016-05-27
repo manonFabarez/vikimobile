@@ -30,7 +30,6 @@ public class BackgroundTask extends AsyncTask <String, Void, String>{
     //Variables
     Context ctx;
     AlertDialog alertDialog;
-
     BackgroundTask(Context ctx){
         this.ctx = ctx;
     }
@@ -45,97 +44,96 @@ public class BackgroundTask extends AsyncTask <String, Void, String>{
         String url_mdpo = "http://virtual-kine.ddns.net/mobile/mdpo.php";
 
         //En fonction du nom de la méthode passée en paramètre -->Action
-        if(method.equals("login")){
+         switch (method) {
+             case "login":
 
-            //Récupération paramètres
-            String login_ident = params[1];
-            String login_pass = params[2];
+                 //Récupération paramètres
+                 String login_ident = params[1];
+                 String login_pass = params[2];
 
-            //Création de l'url d'accès a la page php + paramétrage + stockage dans le buffer
-            try {
-                URL url = new URL(url_connect);
-                HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
-                httpURLConnection.setRequestMethod("POST");
-                httpURLConnection.setDoOutput(true);
-                httpURLConnection.setDoInput(true);
-                OutputStream outputStream = httpURLConnection.getOutputStream();
-                BufferedWriter bufferedWriter = new BufferedWriter( new OutputStreamWriter(outputStream, "UTF-8"));
-                String data = URLEncoder.encode("login_ident","UTF-8")+"="+URLEncoder.encode(login_ident,"UTF-8")+"&"+URLEncoder.encode("login_pass","UTF-8")+"="+URLEncoder.encode(login_pass,"UTF-8");
-                bufferedWriter.write(data);
-                bufferedWriter.flush();
-                bufferedWriter.close();
-                outputStream.close();
-                InputStream inputStream = httpURLConnection.getInputStream();
-                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
-                String response = "";
-                String line = "";
+                 //Création de l'url d'accès a la page php + paramétrage + stockage dans le buffer
+                 try {
+                     URL url = new URL(url_connect);
+                     HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                     httpURLConnection.setRequestMethod("POST");
+                     httpURLConnection.setDoOutput(true);
+                     httpURLConnection.setDoInput(true);
+                     OutputStream outputStream = httpURLConnection.getOutputStream();
+                     BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+                     String data = URLEncoder.encode("login_ident", "UTF-8") + "=" + URLEncoder.encode(login_ident, "UTF-8") + "&" + URLEncoder.encode("login_pass", "UTF-8") + "=" + URLEncoder.encode(login_pass, "UTF-8");
+                     bufferedWriter.write(data);
+                     bufferedWriter.flush();
+                     bufferedWriter.close();
+                     outputStream.close();
+                     InputStream inputStream = httpURLConnection.getInputStream();
+                     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
+                     String response = "";
+                     String line = "";
 
-                //Lecture du resultat retourné
-                while ((line = bufferedReader.readLine())!= null){
+                     //Lecture du resultat retourné
+                     while ((line = bufferedReader.readLine()) != null) {
+                         response += line;
+                     }
 
-                    response += line;
-                }
+                     //Fermeture des objets
+                     bufferedReader.close();
+                     inputStream.close();
+                     httpURLConnection.disconnect();
 
-                //Fermeture des objets
-                bufferedReader.close();
-                inputStream.close();
-                httpURLConnection.disconnect();
+                     //retour de la réponse
+                     return response;
 
-                //retour de la réponse
-                return response;
+                 } catch (MalformedURLException e) {
+                     e.printStackTrace();
+                 } catch (IOException e) {
+                     e.printStackTrace();
+                 }
+                 break;
+             case "mdpo":
 
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        else if(method.equals("mdpo")){
+                 //Récupération paramètres
+                 String email = params[1];
+                 String datenais = params[2];
 
-            //Récupération paramètres
-            String email = params[1];
-            String datenais = params[2];
+                 //Création de l'url d'accès a la page php + paramétrage + stockage dans le buffer
+                 try {
+                     URL url = new URL(url_mdpo);
+                     HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                     httpURLConnection.setRequestMethod("POST");
+                     httpURLConnection.setDoOutput(true);
+                     httpURLConnection.setDoInput(true);
+                     OutputStream outputStream = httpURLConnection.getOutputStream();
+                     BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+                     String data = URLEncoder.encode("email", "UTF-8") + "=" + URLEncoder.encode(email, "UTF-8") + "&" + URLEncoder.encode("datenais", "UTF-8") + "=" + URLEncoder.encode(datenais, "UTF-8");
+                     bufferedWriter.write(data);
+                     bufferedWriter.flush();
+                     bufferedWriter.close();
+                     outputStream.close();
+                     InputStream inputStream = httpURLConnection.getInputStream();
+                     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
+                     String response = "";
+                     String line = "";
 
-            //Création de l'url d'accès a la page php + paramétrage + stockage dans le buffer
-            try {
-                URL url = new URL(url_mdpo);
-                HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
-                httpURLConnection.setRequestMethod("POST");
-                httpURLConnection.setDoOutput(true);
-                httpURLConnection.setDoInput(true);
-                OutputStream outputStream = httpURLConnection.getOutputStream();
-                BufferedWriter bufferedWriter = new BufferedWriter( new OutputStreamWriter(outputStream, "UTF-8"));
-                String data = URLEncoder.encode("email","UTF-8")+"="+URLEncoder.encode(email,"UTF-8")+"&"+URLEncoder.encode("datenais","UTF-8")+"="+URLEncoder.encode(datenais,"UTF-8");
-                bufferedWriter.write(data);
-                bufferedWriter.flush();
-                bufferedWriter.close();
-                outputStream.close();
-                InputStream inputStream = httpURLConnection.getInputStream();
-                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
-                String response = "";
-                String line = "";
+                     //Lecture du resultat retourné
+                     while ((line = bufferedReader.readLine()) != null) {
+                         response += line;
+                     }
 
-                //Lecture du resultat retourné
-                while ((line = bufferedReader.readLine())!= null){
+                     //Fermeture des objets
+                     bufferedReader.close();
+                     inputStream.close();
+                     httpURLConnection.disconnect();
 
-                    response += line;
-                }
+                     //retour de la réponse
+                     return response;
 
-                //Fermeture des objets
-                bufferedReader.close();
-                inputStream.close();
-                httpURLConnection.disconnect();
-
-                //retour de la réponse
-                return response;
-
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        return null;
+                 } catch (MalformedURLException e) {
+                     e.printStackTrace();
+                 } catch (IOException e) {
+                     e.printStackTrace();
+                 }
+             }
+            return null;
     }
 
     @Override
@@ -153,24 +151,25 @@ public class BackgroundTask extends AsyncTask <String, Void, String>{
     protected void onPostExecute(String result) {
 
         switch (result) {
-            case "OKconnexion":
+            case "connexionOK": //Connexion application réussie
                 ctx.startActivity(new Intent(ctx, Menu.class));
                 break;
-            case "Identifiant et/ou mot de passe incorrect. Veuillez recommencer":
-                alertDialog.setMessage(result);
+            case "connexionKO": //Connexion application echec
+                alertDialog.setMessage("Identifiant et/ou mot de passe incorrect. Veuillez recommencer");
                 alertDialog.show();
                 break;
-            case "Un mail vient de vous être envoyé avec votre nouveau mot de passe. N'hésitez pas à consulter votre dossier Courrier Indésirables.":
+            case "mailOK": //nouveau mdp par mail envoyé
                 alertDialog.setTitle("Mail envoyé");
-                alertDialog.setMessage(result);
+                alertDialog.setMessage("Un mail vient de vous être envoyé avec votre nouveau mot de passe. Penser à consulter les mails indésirables.");
                 alertDialog.show();
                 break;
-            case "Informations incorrectes... Veuillez recommencer":
-
+            case "mailKO": // nouveau mot de passe echec
+                alertDialog.setMessage("Informations incorrectes... Veuillez recommence");
+                alertDialog.show();
+                break;
+            case "newMdpOK": //première connexion avec un nouveau mot de passe
+                ctx.startActivity(new Intent(ctx, ChangerMDP.class));
                 break;
         }
-
-        alertDialog.setMessage(result);
-        alertDialog.show();
     }
 }

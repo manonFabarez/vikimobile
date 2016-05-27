@@ -13,23 +13,11 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Connexion"
-        android:textSize="28sp"
-        android:id="@+id/textView"
-        android:textColor="#8e0000"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="20dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="Identifiant :"
         android:id="@+id/tw_ident"
         android:layout_marginTop="28dp"
         android:textAlignment="textStart"
         android:textSize="24sp"
-        android:layout_below="@+id/textView"
         android:layout_alignParentStart="true"
         android:textColor="#284051" />
 
@@ -39,9 +27,9 @@
         android:id="@+id/user_ident"
         android:minHeight="30dp"
         android:minWidth="350dp"
+        android:textColor="#8e0000"
         android:layout_below="@+id/tw_ident"
-        android:layout_alignStart="@+id/tw_ident"
-        android:textColor="#8e0000" />
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -50,9 +38,10 @@
         android:id="@+id/tw_mdp"
         android:textAlignment="textStart"
         android:textSize="24sp"
-        android:layout_above="@+id/user_pass"
-        android:layout_alignStart="@+id/user_ident"
-        android:textColor="#284051" />
+        android:textColor="#284051"
+        android:layout_below="@+id/user_ident"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="30dp" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -61,10 +50,10 @@
         android:minHeight="30dp"
         android:minWidth="350dp"
         android:password="true"
-        android:layout_centerVertical="true"
-        android:layout_alignStart="@+id/tw_mdp"
         android:foregroundTint="#0ba3f5"
-        android:textColor="#8e0000" />
+        android:textColor="#8e0000"
+        android:layout_below="@+id/tw_mdp"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -76,12 +65,12 @@
         android:background="#88dcdc"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:layout_marginBottom="46dp"
-        android:layout_above="@+id/tw_mdpOublie"
-        android:layout_centerHorizontal="true"
         android:clickable="true"
         android:contextClickable="true"
-        android:onClick="buttonOnClick" />
+        android:onClick="buttonOnClick"
+        android:layout_below="@+id/cB_Memoriser"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -93,9 +82,10 @@
         android:textColor="#8e0000"
         android:clickable="true"
         android:contextClickable="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:onClick="forgetOnClick" />
+        android:onClick="forgetOnClick"
+        android:layout_below="@+id/buttonSeConnecter"
+        android:layout_alignEnd="@+id/cB_Memoriser"
+        android:layout_marginTop="20dp" />
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -105,8 +95,8 @@
         android:checked="false"
         android:textSize="24dp"
         android:textColor="#284051"
-        android:layout_above="@+id/buttonSeConnecter"
+        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="5dp" />
+        android:layout_marginTop="0dp" />
 
 </RelativeLayout>
