@@ -203,7 +203,6 @@ public class BackgroundTask extends AsyncTask <String, Void, String>{
 
     @Override
     protected void onPostExecute(String result) {
-
         values = result.split("-");
         switch (values[0]) {
             case "connexionOK": //Connexion application réussie
@@ -232,6 +231,14 @@ public class BackgroundTask extends AsyncTask <String, Void, String>{
                 ctx.startActivity(j);
                 break;
             case "newMdpKO": // nouveau mot de passe echec
+                alertDialog.setMessage("Une erreur est survenue. Le mot de passe n'a pas été modifié");
+                alertDialog.show();
+                ctx.startActivity(new Intent(ctx,Menu.class));
+                break;
+            case "newMdpModifOK": //modification du mot de passe OK
+                ctx.startActivity(new Intent(ctx,Menu.class));
+                break;
+            case "newMdpModifKO": //modification du mot de passe KO
                 alertDialog.setMessage("Une erreur est survenue. Le mot de passe n'a pas été modifié");
                 alertDialog.show();
                 ctx.startActivity(new Intent(ctx,Menu.class));

@@ -61,6 +61,7 @@ public class Menu extends AppCompatActivity {
 
             AlertDialog.Builder builder = new AlertDialog.Builder(Menu.this);
             builder.setMessage("Êtes-vous sur de vouloir vous déconnecter ?");
+
             builder.setCancelable(false);
             builder.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
 
