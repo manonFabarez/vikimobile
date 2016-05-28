@@ -149,7 +149,6 @@ public class BackgroundTask extends AsyncTask <String, Void, String>{
 
     @Override
     protected void onPostExecute(String result) {
-
         switch (result) {
             case "connexionOK": //Connexion application réussie
                 ctx.startActivity(new Intent(ctx, Menu.class));
@@ -169,6 +168,10 @@ public class BackgroundTask extends AsyncTask <String, Void, String>{
                 break;
             case "newMdpOK": //première connexion avec un nouveau mot de passe
                 ctx.startActivity(new Intent(ctx, ChangerMDP.class));
+                break;
+            default :
+                alertDialog.setMessage(result);
+                alertDialog.show();
                 break;
         }
     }
