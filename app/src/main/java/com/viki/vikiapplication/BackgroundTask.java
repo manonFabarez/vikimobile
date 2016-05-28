@@ -27,6 +27,7 @@ import static android.support.v4.app.ActivityCompat.startActivity;
  */
 public class BackgroundTask extends AsyncTask <String, Void, String>{
 
+
     //Variables
     final String EXTRAT_IDP = "idP";
     static String idP;
