@@ -9,17 +9,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.viki.vikiapplication.ChangerMDP">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Modifier votre mot de passe"
-        android:textSize="28sp"
-        android:id="@+id/TV_titre_modifierMdp"
-        android:textColor="#8e0000"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="20dp" />
-
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -30,11 +19,12 @@
         android:background="#88dcdc"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp"
         android:clickable="true"
-        android:contextClickable="true" />
+        android:contextClickable="true"
+        android:layout_below="@+id/et_ChgerMDP_Confirmation"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="73dp"
+        android:onClick="valider_chgerMdp_OnClick" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -43,10 +33,10 @@
         android:id="@+id/TV_ChgerMdp_AncienMDP"
         android:textAlignment="textStart"
         android:textSize="24sp"
-        android:layout_marginTop="56dp"
-        android:layout_below="@+id/TV_titre_modifierMdp"
-        android:layout_alignParentStart="true"
-        android:textColor="#284051" />
+        android:textColor="#284051"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="wrap_content"

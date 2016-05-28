@@ -1,9 +1,11 @@
 package com.viki.vikiapplication;
 
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 
 public class ChangerMDP extends AppCompatActivity {
@@ -27,6 +29,11 @@ public class ChangerMDP extends AppCompatActivity {
     }
 
     public void valider_chgerMdp_OnClick(View V) {
+
+        //Récupération des valeurs
+        ET_OLD = (EditText)findViewById(R.id.et_ChgerMdp_AncienMDP);
+        ET_NEW = (EditText)findViewById(R.id.et_ChgerMdp_NewMDP);
+        ET_CONF = (EditText)findViewById(R.id.et_ChgerMDP_Confirmation);
 
         //Récupération de l'info dans un string
         old_mdp = ET_OLD.getText().toString();
