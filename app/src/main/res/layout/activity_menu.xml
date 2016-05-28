@@ -8,7 +8,7 @@
     android:paddingRight="16dp"
     android:paddingTop="16dp"
     android:padding="10dp"
-    tools:context="com.viki.vikiapplication.Menu"
+    tools:context=".Menu"
     android:clickable="true"
     android:background="#ffffff">
 
@@ -115,5 +115,16 @@
         android:src="@mipmap/menu_titre"
         android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true" />
+
+    <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/bt_deconnexion"
+        android:layout_alignTop="@+id/imgV_menu_titre"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignBottom="@+id/imgV_menu_titre"
+        android:background="@mipmap/bt_deconnexion"
+        android:onClick="buttonOnClick" />
 
 </RelativeLayout>

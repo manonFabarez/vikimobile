@@ -38,6 +38,7 @@ public class Connexion extends Activity {
     }
 
     public void forgetOnClick(View V) {
+        finish();
         Intent n = new Intent(getApplicationContext(),MdpOublie.class);
         startActivity(n);
     }
