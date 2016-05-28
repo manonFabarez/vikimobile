@@ -236,6 +236,10 @@ public class BackgroundTask extends AsyncTask <String, Void, String>{
                 alertDialog.show();
                 ctx.startActivity(new Intent(ctx,Menu.class));
                 break;
+            default :
+                alertDialog.setMessage(result);
+                alertDialog.show();
+                break;
         }
     }
 }
