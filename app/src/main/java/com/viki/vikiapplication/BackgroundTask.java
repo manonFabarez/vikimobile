@@ -32,7 +32,7 @@ public class BackgroundTask extends AsyncTask <String, Void, String>{
     static String idP;
     String values[] = new String[2];
     Context ctx;
-    AlertDialog alertDialog;
+    AlertDialog.Builder builder;
     BackgroundTask(Context ctx){
         this.ctx = ctx;
     }
@@ -192,8 +192,8 @@ public class BackgroundTask extends AsyncTask <String, Void, String>{
 
     @Override
     protected void onPreExecute() {
-        alertDialog = new AlertDialog.Builder(ctx).create();
-        alertDialog.setTitle("Oups ...");
+        builder = new AlertDialog.Builder(ctx);
+        builder.setTitle("Oups ...");
     }
 
     @Override
@@ -212,17 +212,38 @@ public class BackgroundTask extends AsyncTask <String, Void, String>{
                 ctx.startActivity(i);
                 break;
             case "connexionKO": //Connexion application echec
-                alertDialog.setMessage("Identifiant et/ou mot de passe incorrect. Veuillez recommencer");
-                alertDialog.show();
+                builder.setMessage("Identifiant et/ou mot de passe incorrect. Veuillez recommencer.")
+                        .setCancelable(false)// ne tient pas compte de BACK
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+
+                            }
+                        });
+                AlertDialog alertConnexionKO = builder.create();
+                alertConnexionKO.show();
                 break;
             case "mailOK": //nouveau mdp par mail envoyé
-                alertDialog.setTitle("Mail envoyé");
-                alertDialog.setMessage("Un mail vient de vous être envoyé avec votre nouveau mot de passe. Penser à consulter les mails indésirables.");
-                alertDialog.show();
+                builder.setTitle("Mail envoyé")
+                        .setMessage("Un mail vient de vous être envoyé avec votre nouveau mot de passe. Penser à consulter les mails indésirables.")
+                        .setCancelable(false)// ne tient pas compte de BACK
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                ctx.startActivity(new Intent(ctx,Connexion.class));
+                            }
+                        });
+                AlertDialog alertmailOK = builder.create();
+                alertmailOK.show();
                 break;
             case "mailKO": // nouveau mot de passe echec
-                alertDialog.setMessage("Informations incorrectes... Veuillez recommence");
-                alertDialog.show();
+                builder.setMessage("Informations incorrectes... Veuillez recommencer.")
+                        .setCancelable(false)// ne tient pas compte de BACK
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+
+                            }
+                        });
+                AlertDialog alertmailKO = builder.create();
+                alertmailKO.show();
                 break;
             case "newMdpOK": //première connexion avec un nouveau mot de passe
                 idP = values[1];
@@ -231,21 +252,41 @@ public class BackgroundTask extends AsyncTask <String, Void, String>{
                 ctx.startActivity(j);
                 break;
             case "newMdpKO": // nouveau mot de passe echec
-                alertDialog.setMessage("Une erreur est survenue. Le mot de passe n'a pas été modifié");
-                alertDialog.show();
-                ctx.startActivity(new Intent(ctx,Menu.class));
+                builder.setMessage("Une erreur est survenue. Le mot de passe n'a pas été modifié.")
+                        .setCancelable(false)// ne tient pas compte de BACK
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                ctx.startActivity(new Intent(ctx,Menu.class));
+                            }
+                        });
+                AlertDialog alertnewMdpKO = builder.create();
+                alertnewMdpKO.show();
                 break;
             case "newMdpModifOK": //modification du mot de passe OK
                 ctx.startActivity(new Intent(ctx,Menu.class));
                 break;
             case "newMdpModifKO": //modification du mot de passe KO
-                alertDialog.setMessage("Une erreur est survenue. Le mot de passe n'a pas été modifié");
-                alertDialog.show();
-                ctx.startActivity(new Intent(ctx,Menu.class));
+                builder.setMessage("Une erreur est survenue. Le mot de passe n'a pas été modifié.")
+                        .setCancelable(false)// ne tient pas compte de BACK
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                ctx.startActivity(new Intent(ctx,Menu.class));
+                            }
+                        });
+                AlertDialog alertnewMdpModifKO = builder.create();
+                alertnewMdpModifKO.show();
                 break;
             default :
-                alertDialog.setMessage(result);
-                alertDialog.show();
+                builder.setTitle("Erreur système")
+                        .setMessage("Une erreur est survenue : "+result)
+                        .setCancelable(false)// ne tient pas compte de BACK
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+
+                            }
+                        });
+                AlertDialog alertError = builder.create();
+                alertError.show();
                 break;
         }
     }
