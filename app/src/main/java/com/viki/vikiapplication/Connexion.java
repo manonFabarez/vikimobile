@@ -11,7 +11,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class Connexion extends Activity {
+public class Connexion extends AppCompatActivity {
 
     //Variables
     EditText ET_IDENT, ET_PASS;
