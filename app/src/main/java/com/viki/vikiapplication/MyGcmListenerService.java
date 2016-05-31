@@ -16,7 +16,7 @@ import java.util.Random;
  * Created by Pauline on 30/05/2016.
  */
 public class MyGcmListenerService {
-    private static final String TAG = "MyGcmListenerService";
+   /* private static final String TAG = "MyGcmListenerService";
 
     /**
      * Called when message is received.
@@ -25,14 +25,14 @@ public class MyGcmListenerService {
      * @param data Data bundle containing message data as key/value pairs.
      *             For Set of keys use data.keySet().
      */
-    @Override
+   /* @Override
     public void onMessageReceived(String from, Bundle data) {
 
         String message = data.getString("message");
         String title = data.getString("title");
 
         Log.d(TAG, "From: " + from);
-        Log.d(TAG, "Message: " + message);
+        Log.d(TAG, "Message: " + message);*/
 
         /**
          * Production applications would usually process the message here.
@@ -45,34 +45,33 @@ public class MyGcmListenerService {
          * In some cases it may be useful to show a notification indicating to the user
          * that a message was received.
          */
-        sendNotification(message, title);
-    }
+        //sendNotification(message, title);
+    //}
 
     /**
      * Create and show a simple notification containing the received GCM message.
      *
      * @param message GCM message received.
      */
-    private void sendNotification(String message, String title) {
-        Intent intent = new Intent(this, Connexion.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
-                PendingIntent.FLAG_ONE_SHOT);
+    //private void sendNotification(String message, String title) {
+      //  Intent intent = new Intent(this, Connexion.class);
+        //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        //PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
+          //      PendingIntent.FLAG_ONE_SHOT);
 
-        Uri defaultSoundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
-                .setSmallIcon(R.mipmap.ic_launcher)
-                .setContentTitle(title)
-                .setContentText(message)
-                .setAutoCancel(true)
-                .setSound(defaultSoundUri)
-                .setContentIntent(pendingIntent);
+        //Uri defaultSoundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        //NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
+          //      .setSmallIcon(R.mipmap.ic_launcher)
+            //    .setContentTitle(title)
+              //  .setContentText(message)
+               // .setAutoCancel(true)
+               // .setSound(defaultSoundUri)
+               // .setContentIntent(pendingIntent);
 
-        NotificationManager notificationManager =
+        /*NotificationManager notificationManager =
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
         // On génère un nombre aléatoire pour pouvoir afficher plusieurs notifications
         notificationManager.notify(new Random().nextInt(9999), notificationBuilder.build());
-    }
-}
+    }*/
 }
