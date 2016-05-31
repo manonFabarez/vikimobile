@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="16dp"
-    tools:context=".Connexion"
+    tools:context="com.viki.vikiapplication.Connexion"
     android:background="#ffffff">
 
     <TextView
