@@ -1,4 +1,11 @@
 <resources>
+    <string name="registering_message">
+    894632921645
+    Token généré et envoyé au serveur, vous pouvez maintenant envoyer des messages
+    à cette application
+    Génération du token...
+    Une erreur s\'est produite, veuillez réessayer ! </string>
+
     <string name="app_name">ViKiApplication</string>
     <string name="title_activity_changer_mdp">Changer son Mot de passe</string>
 
@@ -15,4 +22,6 @@
         completions."
     </string>
     <string name="title_activity_connexion2">Connexion2</string>
+
+
 </resources>

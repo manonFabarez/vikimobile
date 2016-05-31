@@ -276,6 +276,7 @@ public class BackgroundTask extends AsyncTask <String, Void, String>{
                 AlertDialog alertnewMdpModifKO = builder.create();
                 alertnewMdpModifKO.show();
                 break;
+
             default :
                 builder.setTitle("Erreur système")
                         .setMessage("Une erreur est survenue : "+result)
