@@ -15,8 +15,7 @@
         android:layout_height="200dp"
         android:id="@+id/imageView"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:background="@mipmap/logoviki" />
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
