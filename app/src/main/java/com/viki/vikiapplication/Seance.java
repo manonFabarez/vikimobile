@@ -6,8 +6,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +19,7 @@ public class Seance extends AppCompatActivity implements AdapterView.OnItemSelec
     Spinner spinner;
     RelativeLayout rv_not;
     View imageSmiley;
+    Button imageButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,13 +29,13 @@ public class Seance extends AppCompatActivity implements AdapterView.OnItemSelec
         // Spinner element
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
         rv_not  = (RelativeLayout) findViewById(R.id.rv_notation);
-        imageSmiley = findViewById(R.id.imageView2);
 
         // Spinner click listener
         spinner.setOnItemSelectedListener(this);
 
         // Spinner Drop down elements
         List<String> categories = new ArrayList<String>();
+        categories.add("");
         categories.add("Automobile");
         categories.add("Business Services");
         categories.add("Computers");
@@ -48,6 +51,8 @@ public class Seance extends AppCompatActivity implements AdapterView.OnItemSelec
 
         // attaching data adapter to spinner
         spinner.setAdapter(dataAdapter);
+
+        addListenerOnButton();
     }
 
     @Override
@@ -56,8 +61,12 @@ public class Seance extends AppCompatActivity implements AdapterView.OnItemSelec
         String item = parent.getItemAtPosition(position).toString();
 
         // Showing selected spinner item
-        rv_not.setVisibility(View.VISIBLE);
-        imageSmiley.setVisibility(View.VISIBLE);
+        if(item!=""){
+            rv_not.setVisibility(View.VISIBLE);
+        }else{
+            rv_not.setVisibility(View.INVISIBLE);
+        }
+
     }
 
     @Override
@@ -71,6 +80,25 @@ public class Seance extends AppCompatActivity implements AdapterView.OnItemSelec
         homeIntent.addCategory( Intent.CATEGORY_HOME );
         homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(homeIntent);
+    }
+
+    public void addListenerOnButton() {
+
+        imageButton = (Button) findViewById(R.id.ibs_smileycontent);
+
+        imageButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+
+                Toast.makeText(Seance.this,
+                        "ImageButton (selector) is clicked!",
+                        Toast.LENGTH_SHORT).show();
+
+            }
+
+        });
+
     }
 
 }
