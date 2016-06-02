@@ -1,34 +1,52 @@
 package com.viki.vikiapplication;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
-import android.widget.Toast;
+
+import com.google.android.gms.common.api.GoogleApiClient;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Seance extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    Spinner spinner;
+    Spinner listNote, spinner;
     RelativeLayout rv_not;
-    View imageSmiley;
-    Button imageButton;
+    String select;
+    final String EXTRAT_RETOUR = "retourSeance";
+    String idP;
+    final String EXTRAT_IDP = "idP";
+    ArrayAdapter<String> dataAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seance);
 
+        //Récupération de l'id du patient et de la liste des dates à noter
+        Intent i = getIntent();
+        if(i != null){
+            idP = i.getStringExtra(EXTRAT_IDP);
+            select = i.getStringExtra(EXTRAT_RETOUR);
+        }
+
         // Spinner element
-        Spinner spinner = (Spinner) findViewById(R.id.spinner);
-        rv_not  = (RelativeLayout) findViewById(R.id.rv_notation);
+        spinner = (Spinner) findViewById(R.id.spinner);
+        rv_not = (RelativeLayout) findViewById(R.id.rv_notation);
+        rv_not.setVisibility(View.INVISIBLE);
+        listNote = (Spinner) findViewById(R.id.listeDouleur);
 
         // Spinner click listener
         spinner.setOnItemSelectedListener(this);
@@ -36,15 +54,15 @@ public class Seance extends AppCompatActivity implements AdapterView.OnItemSelec
         // Spinner Drop down elements
         List<String> categories = new ArrayList<String>();
         categories.add("");
-        categories.add("Automobile");
-        categories.add("Business Services");
-        categories.add("Computers");
-        categories.add("Education");
-        categories.add("Personal");
-        categories.add("Travel");
+        String traitement = select.substring(12);
+        String[] ligne = traitement.split(";");
+        for(int z=0; z<ligne.length; z++) {
+            String[] list = ligne[z].split(",");
+            categories.add(list[1].substring(0,10));
+        }
 
         // Creating adapter for spinner
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
+        dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
 
         // Drop down layout style - list view with radio button
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -52,7 +70,26 @@ public class Seance extends AppCompatActivity implements AdapterView.OnItemSelec
         // attaching data adapter to spinner
         spinner.setAdapter(dataAdapter);
 
-        addListenerOnButton();
+        //LISTE DEROULANTE DE LA DOULEUR
+
+        // Spinner click listener
+        listNote.setOnItemSelectedListener(this);
+
+        // Spinner Drop down elements
+        List<Integer> douleur = new ArrayList<>();
+        for(int z=0; z<11; z++) {
+            douleur.add(z);
+        }
+
+        // Creating adapter for spinner
+        ArrayAdapter<Integer> dataAdapterNote = new ArrayAdapter<Integer>(this, android.R.layout.simple_spinner_item, douleur);
+
+        // Drop down layout style - list view with radio button
+        dataAdapterNote.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // attaching data adapter to spinner
+        listNote.setAdapter(dataAdapterNote);
+
     }
 
     @Override
@@ -60,13 +97,17 @@ public class Seance extends AppCompatActivity implements AdapterView.OnItemSelec
         // On selecting a spinner item
         String item = parent.getItemAtPosition(position).toString();
 
-        // Showing selected spinner item
-        if(item!=""){
-            rv_not.setVisibility(View.VISIBLE);
-        }else{
-            rv_not.setVisibility(View.INVISIBLE);
+        Spinner spinnerChoice = (Spinner) parent;
+        if(spinnerChoice.getId() == R.id.spinner)
+        {
+            //do this
+            // Showing selected spinner item
+            if (item != "") {
+                rv_not.setVisibility(View.VISIBLE);
+            } else {
+                rv_not.setVisibility(View.INVISIBLE);
+            }
         }
-
     }
 
     @Override
@@ -74,31 +115,33 @@ public class Seance extends AppCompatActivity implements AdapterView.OnItemSelec
 
     }
 
-    public void buttonDecoOnClick(View v){
+    public void buttonDecoOnClick(View v) {
         Intent homeIntent = new Intent(getApplicationContext(), Connexion.class);
         //Remise à zéro de l'application
-        homeIntent.addCategory( Intent.CATEGORY_HOME );
+        homeIntent.addCategory(Intent.CATEGORY_HOME);
         homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(homeIntent);
     }
 
-    public void addListenerOnButton() {
+    public void buttonValiderNotationOnClick(View v){
+        String dateSeance = spinner.getSelectedItem().toString();
+        String noteSeance = listNote.getSelectedItem().toString();
+        EditText commentaire = (EditText) findViewById(R.id.et_commentaireSeance);
+        String commentaireSeance = commentaire.getText().toString().replace("'","''");
 
-        imageButton = (Button) findViewById(R.id.ibs_smileycontent);
+        //Passement des infos dans une tâche en arrière plan : class BackGroundTask
+        String method = "noterseance";
+        BackgroundTask backgroundTask = new BackgroundTask(this);
 
-        imageButton.setOnClickListener(new View.OnClickListener() {
+        //Exécution tache en arrière plan + paramètres necessaires à la taches
+        backgroundTask.execute(method,idP, dateSeance, noteSeance, commentaireSeance);
 
-            @Override
-            public void onClick(View arg0) {
-
-                Toast.makeText(Seance.this,
-                        "ImageButton (selector) is clicked!",
-                        Toast.LENGTH_SHORT).show();
-
-            }
-
-        });
-
+        rv_not.setVisibility(View.INVISIBLE);
+        dataAdapter.remove(dateSeance);
+        dataAdapter.getItem(0);
+        dataAdapter.notifyDataSetChanged();
     }
+
+
 
 }
