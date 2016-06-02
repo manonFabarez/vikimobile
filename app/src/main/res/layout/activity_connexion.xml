@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:text="Identifiant :"
         android:id="@+id/tw_ident"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="30dp"
         android:textAlignment="textStart"
         android:textSize="24sp"
         android:layout_alignParentStart="true"
@@ -29,7 +29,8 @@
         android:minWidth="350dp"
         android:textColor="#8e0000"
         android:layout_below="@+id/tw_ident"
-        android:layout_alignParentStart="false" />
+        android:layout_alignParentStart="false"
+        android:layout_marginTop="10dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -53,7 +54,8 @@
         android:foregroundTint="#0ba3f5"
         android:textColor="#8e0000"
         android:layout_below="@+id/tw_mdp"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp" />
 
     <Button
         android:layout_width="wrap_content"
@@ -70,7 +72,7 @@
         android:onClick="buttonOnClick"
         android:layout_below="@+id/cB_Memoriser"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp" />
+        android:layout_marginTop="20dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -97,5 +99,5 @@
         android:textColor="#284051"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="0dp" />
+        android:layout_marginTop="30dp" />
 </RelativeLayout>

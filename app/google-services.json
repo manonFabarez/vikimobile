@@ -1,0 +1,61 @@
+{
+  "project_info": {
+    "project_number": "894632921645",
+    "project_id": "vikiapplication-1327"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:894632921645:android:79ef7c97c2225de4",
+        "android_client_info": {
+          "package_name": "com.vikiApplication.gcm"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7KUZoAIfb2AMB2zblRTd3WVw9b9z8yLM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:894632921645:android:e2afc17ccc0538e4",
+        "android_client_info": {
+          "package_name": "com.viki.vikiapplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7KUZoAIfb2AMB2zblRTd3WVw9b9z8yLM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
