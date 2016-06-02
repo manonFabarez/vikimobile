@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -29,7 +30,8 @@ public class BackgroundTask extends AsyncTask <String, Void, String>{
 
     //Variables
     final String EXTRAT_IDP = "idP";
-    static String idP;
+    final String EXTRAT_RETOUR = "retourSeance";
+    static String idP, resultat;
     String values[] = new String[2];
     Context ctx;
     AlertDialog.Builder builder;
@@ -46,6 +48,8 @@ public class BackgroundTask extends AsyncTask <String, Void, String>{
         String url_connect = "http://virtual-kine.ddns.net/mobile/login.php";
         String url_mdpo = "http://virtual-kine.ddns.net/mobile/mdpo.php";
         String url_newMdp = "http://virtual-kine.ddns.net/mobile/newMdp.php";
+        String url_seance = "http://virtual-kine.ddns.net/mobile/seance.php";
+        String url_noterseance = "http://virtual-kine.ddns.net/mobile/noterseance.php";
 
         //En fonction du nom de la méthode passée en paramètre -->Action
          switch (method) {
@@ -185,7 +189,100 @@ public class BackgroundTask extends AsyncTask <String, Void, String>{
                      e.printStackTrace();
                  }
                  break;
-             }
+
+             case "seance":
+
+                 //Récupération paramètres
+                 String login = idP;
+
+                 //Création de l'url d'accès a la page php + paramétrage + stockage dans le buffer
+                 try {
+                     URL url = new URL(url_seance);
+                     HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                     httpURLConnection.setRequestMethod("POST");
+                     httpURLConnection.setDoOutput(true);
+                     httpURLConnection.setDoInput(true);
+                     OutputStream outputStream = httpURLConnection.getOutputStream();
+                     BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+                     String data = URLEncoder.encode("login", "UTF-8") + "=" + URLEncoder.encode(login, "UTF-8");
+                     bufferedWriter.write(data);
+                     bufferedWriter.flush();
+                     bufferedWriter.close();
+                     outputStream.close();
+                     InputStream inputStream = httpURLConnection.getInputStream();
+                     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
+                     String response = "";
+                     String line = "";
+
+                     //Lecture du resultat retourné
+                     while ((line = bufferedReader.readLine()) != null) {
+                         response += line;
+                     }
+
+                     //Fermeture des objets
+                     bufferedReader.close();
+                     inputStream.close();
+                     httpURLConnection.disconnect();
+
+                     //retour de la réponse
+                     return response;
+
+                 } catch (MalformedURLException e) {
+                     e.printStackTrace();
+                 } catch (IOException e) {
+                     e.printStackTrace();
+                 }
+             case "noterseance":
+
+                 //Récupération paramètres
+                 String idP = params[1];
+                 String dateSeance = params[2];
+                 String  noteSeance = params[3];
+                 String commentaireSeance = params[4];
+
+                 //Création de l'url d'accès a la page php + paramétrage + stockage dans le buffer
+                 try {
+                     URL url = new URL(url_noterseance);
+                     HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                     httpURLConnection.setRequestMethod("POST");
+                     httpURLConnection.setDoOutput(true);
+                     httpURLConnection.setDoInput(true);
+                     OutputStream outputStream = httpURLConnection.getOutputStream();
+                     BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+                     String data = URLEncoder.encode("idP", "UTF-8") + "=" + URLEncoder.encode(idP, "UTF-8") + "&" +
+                             URLEncoder.encode("dateSeance", "UTF-8") + "=" + URLEncoder.encode(dateSeance, "UTF-8") + "&" +
+                             URLEncoder.encode("noteSeance", "UTF-8") + "=" + URLEncoder.encode(noteSeance, "UTF-8") + "&" +
+                             URLEncoder.encode("commentaireSeance", "UTF-8") + "=" + URLEncoder.encode(commentaireSeance, "UTF-8");
+                     bufferedWriter.write(data);
+                     bufferedWriter.flush();
+                     bufferedWriter.close();
+                     outputStream.close();
+                     InputStream inputStream = httpURLConnection.getInputStream();
+                     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
+                     String response = "";
+                     String line = "";
+
+                     //Lecture du resultat retourné
+                     while ((line = bufferedReader.readLine()) != null) {
+                         response += line;
+                     }
+
+                     //Fermeture des objets
+                     bufferedReader.close();
+                     inputStream.close();
+                     httpURLConnection.disconnect();
+
+                     //retour de la réponse
+                     return response;
+
+                 } catch (MalformedURLException e) {
+                     e.printStackTrace();
+                 } catch (IOException e) {
+                     e.printStackTrace();
+                 }
+
+         }
+
 
             return null;
     }
@@ -276,7 +373,29 @@ public class BackgroundTask extends AsyncTask <String, Void, String>{
                 AlertDialog alertnewMdpModifKO = builder.create();
                 alertnewMdpModifKO.show();
                 break;
+            case "retourSeance": //retour de la séance
+                Intent retour = new Intent(ctx, Seance.class);
+                retour.putExtra(EXTRAT_IDP,idP);
+                retour.putExtra(EXTRAT_RETOUR,result);
+                ctx.startActivity(retour);
+                break;
+            case "noterseanceOK": //Notation de la séance OK
+                Toast.makeText(ctx,
+                        "Merci d'avoir noter cette séance !",
+                        Toast.LENGTH_SHORT).show();
+                resultat = "finishSEANCE";
+                break;
+            case "noterseanceKO": //Notation de la séance échec
+                builder.setMessage("Une erreur est survenue. La notation n'a pas été enregistrée.")
+                        .setCancelable(false)// ne tient pas compte de BACK
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
 
+                            }
+                        });
+                AlertDialog alertnoterSeanceKO = builder.create();
+                alertnoterSeanceKO.show();
+                break;
             default :
                 builder.setTitle("Erreur système")
                         .setMessage("Une erreur est survenue : "+result)

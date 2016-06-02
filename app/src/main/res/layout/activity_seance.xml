@@ -7,6 +7,111 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.viki.vikiapplication.Seance">
+    tools:context="com.viki.vikiapplication.Seance"
+    android:background="#ffffff">
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner"
+        android:layout_below="@+id/tv_choixSeance"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="25dp" />
+
+    <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/bt_deconnexion"
+        android:onClick="buttonDecoOnClick"
+        android:src="@mipmap/bt_deconnexion"
+        android:clickable="true"
+        android:scaleType="center"
+        android:background="#ffffff"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choisissez la séance à noter :"
+        android:id="@+id/tv_choixSeance"
+        android:textAlignment="textStart"
+        android:textSize="20dp"
+        android:textColor="#284051"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/bt_deconnexion"
+        android:layout_toStartOf="@+id/bt_deconnexion" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/spinner"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:visibility="visible"
+        android:id="@+id/rv_notation"
+        android:layout_marginTop="30dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="La douleur : \n 0 : Insupportable 10 : Trop facile"
+            android:id="@+id/tv_note"
+            android:textAlignment="textStart"
+            android:textSize="20dp"
+            android:textColor="#284051"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Un commentaire (facultatif) :"
+            android:id="@+id/tv_commentaire"
+            android:textAlignment="textStart"
+            android:textSize="20dp"
+            android:textColor="#284051"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/et_commentaireSeance"
+            android:layout_below="@+id/tv_commentaire"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_above="@+id/buttonValider" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Valider"
+            android:id="@+id/buttonValider"
+            android:minWidth="250dp"
+            android:textColor="@color/abc_primary_text_disable_only_material_dark"
+            android:background="#88dcdc"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:clickable="true"
+            android:contextClickable="true"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:onClick="buttonValiderNotationOnClick" />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/listeDouleur"
+            android:layout_below="@+id/tv_note"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+    </RelativeLayout>
 
 </RelativeLayout>

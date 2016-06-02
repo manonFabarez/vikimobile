@@ -13,10 +13,19 @@ import android.widget.EditText;
 
 public class Menu extends AppCompatActivity {
 
+    String idP;
+    final String EXTRAT_IDP = "idP";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+
+        //Récupération de l'id du patient
+        Intent i = getIntent();
+        if(i != null){
+            idP = i.getStringExtra(EXTRAT_IDP);
+        }
     }
 
     public void buttonOnClick(View V){
@@ -31,8 +40,13 @@ public class Menu extends AppCompatActivity {
                 startActivity(j);
                 break;
             case R.id.bt_menu_seance :
-                Intent k = new Intent(getApplicationContext(),Seance.class);
-                startActivity(k);
+                //Passement des infos dans une tâche en arrière plan : class BackGroundTask
+                String method = "seance";
+                BackgroundTask backgroundTask = new BackgroundTask(this);
+
+                //Exécution tache en arrière plan + paramètres necessaires à la taches
+                backgroundTask.execute(method,idP);
+
                 break;
             case R.id.bt_menu_resultat :
                 Intent l = new Intent(getApplicationContext(),Resultat.class);
