@@ -12,7 +12,24 @@
 
    <TextView
        android:layout_width="wrap_content"
-       android:layout_height="match_parent"
-       android:text="GCM exemple"
-       android:textSize ="25dp"/>
+       android:layout_height="wrap_content"
+       android:text="BIENVENUE"
+       android:textSize ="25dp"
+       android:textColor="#8e0000"
+       android:textStyle="bold"
+       android:textAlignment="center"
+       android:id="@+id/textView"
+       android:layout_above="@+id/imageView"
+       android:layout_alignParentRight="true"
+       android:layout_alignParentEnd="true"
+       android:layout_alignParentLeft="true"
+       android:layout_alignParentStart="true" />
+
+   <ImageView
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:id="@+id/imageView"
+       android:background="@mipmap/logo"
+       android:layout_centerVertical="true"
+       android:layout_centerHorizontal="true" />
 </RelativeLayout>

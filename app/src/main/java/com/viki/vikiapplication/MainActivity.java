@@ -31,9 +31,9 @@ public class MainActivity extends Activity {
             public void onReceive(Context context, Intent intent) {
                 if(intent.getAction().endsWith(GCMRegistrationIntentService.REGISTRATION_SUCCESS)){
                     String token = intent.getStringExtra("token");
-                    Toast.makeText(getApplicationContext(),"GCM token :"+token, Toast.LENGTH_LONG).show();
+                    //Toast.makeText(getApplicationContext(),"GCM token :"+token, Toast.LENGTH_LONG).show();
                 } else if (intent.getAction().equals(GCMRegistrationIntentService.REGISTRATION_ECHEC)){
-                    Toast.makeText(getApplicationContext(),"GCM registration error !", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(getApplicationContext(),"GCM registration error !", Toast.LENGTH_LONG).show();
                 } else{
 
                 }
@@ -44,16 +44,26 @@ public class MainActivity extends Activity {
         int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(getApplicationContext());
         if(ConnectionResult.SUCCESS != resultCode) {
             if (GooglePlayServicesUtil.isUserRecoverableError(resultCode)) {
-                Toast.makeText(getApplicationContext(), "Google play service is not install/enable in this device", Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(), "Google play service is not install/enable in this device", Toast.LENGTH_LONG).show();
                 GooglePlayServicesUtil.showErrorNotification(resultCode, getApplicationContext());
             } else {
-                Toast.makeText(getApplicationContext(), "this device does not support for google play service", Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(), "this device does not support for google play service", Toast.LENGTH_LONG).show();
             }
         }else{
              Intent intent = new Intent(this, GCMRegistrationIntentService.class);
              startService(intent);
             }
-        }
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                final Intent mainIntent = new Intent(MainActivity.this, Connexion.class);
+                MainActivity.this.startActivity(mainIntent);
+                MainActivity.this.finish();
+            }
+        }, 1000);
+
+    }
 
     @Override
     protected void onResume() {
@@ -74,13 +84,5 @@ public class MainActivity extends Activity {
 
     }
 
-  /*  new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                final Intent mainIntent = new Intent(MainActivity.this, Connexion.class);
-                MainActivity.this.startActivity(mainIntent);
-                MainActivity.this.finish();
-            }
-        }, 1000);
-    }*/
+
 }
