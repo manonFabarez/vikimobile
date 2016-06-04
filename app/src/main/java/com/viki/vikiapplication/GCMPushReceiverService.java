@@ -20,11 +20,15 @@ public class GCMPushReceiverService  extends GcmListenerService{
     @Override
     public void onMessageReceived(String from, Bundle data) {
         String message = data.getString("message");
-        sendNotification(message);
+        String title = data.getString("title");
+        String subtitle = data.getString("subtitle");
+        sendNotification(message, title, subtitle);
         Log.v("MESSAGERECEIVE",message);
+        Log.v("MESSAGERECEIVE",title);
+        Log.v("MESSAGERECEIVE",subtitle);
     }
 
-    public void sendNotification(String message){
+    public void sendNotification(String message, String title, String subtitle){
         Intent intent = new Intent (this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         int requestCode = 0;
@@ -37,8 +41,9 @@ public class GCMPushReceiverService  extends GcmListenerService{
         //Build notification
         NotificationCompat.Builder noBuilder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.mipmap.logo)
-                .setContentText("ViKi à un message pour vous ...")
+                .setContentTitle(title)
                 .setContentText(message)
+                .setSubText(subtitle)
                 .setAutoCancel(true)
                 .setContentIntent(pendingIntent);
         NotificationManager notificationManager =(NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
