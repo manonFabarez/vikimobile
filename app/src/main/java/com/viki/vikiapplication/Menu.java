@@ -29,11 +29,19 @@ public class Menu extends AppCompatActivity {
     }
 
     public void buttonOnClick(View V){
+        String method;
 
         switch(V.getId()){
             case R.id.bt_menu_programme :
-                Intent i = new Intent(getApplicationContext(),Programme.class);
-                startActivity(i);
+                //Passement des infos dans une tâche en arrière plan : class BackGroundTask
+                method = "programme";
+                BackgroundTask backgroundTaskP = new BackgroundTask(this);
+
+                //Exécution tache en arrière plan + paramètres necessaires à la taches
+                backgroundTaskP.execute(method,idP);
+
+               /* Intent i = new Intent(getApplicationContext(),Programme.class);
+                startActivity(i);*/
                 break;
             case R.id.bt_menu_video :
                 Intent j = new Intent(getApplicationContext(),Video.class);
@@ -41,7 +49,7 @@ public class Menu extends AppCompatActivity {
                 break;
             case R.id.bt_menu_seance :
                 //Passement des infos dans une tâche en arrière plan : class BackGroundTask
-                String method = "seance";
+                method = "seance";
                 BackgroundTask backgroundTask = new BackgroundTask(this);
 
                 //Exécution tache en arrière plan + paramètres necessaires à la taches

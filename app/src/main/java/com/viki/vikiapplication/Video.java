@@ -7,8 +7,9 @@ public class Video extends AppCompatActivity {
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_video);
+
+    /*   voir code : https://www.youtube.com/watch?v=SiD77g9KfhA */
     }
 }

@@ -50,6 +50,7 @@ public class BackgroundTask extends AsyncTask <String, Void, String>{
         String url_newMdp = "http://virtual-kine.ddns.net/mobile/newMdp.php";
         String url_seance = "http://virtual-kine.ddns.net/mobile/seance.php";
         String url_noterseance = "http://virtual-kine.ddns.net/mobile/noterseance.php";
+        String url_programme = "http://virtual-kine.ddns.net/mobile/programme.php";
 
         //En fonction du nom de la méthode passée en paramètre -->Action
          switch (method) {
@@ -232,6 +233,8 @@ public class BackgroundTask extends AsyncTask <String, Void, String>{
                  } catch (IOException e) {
                      e.printStackTrace();
                  }
+                 break;
+
              case "noterseance":
 
                  //Récupération paramètres
@@ -280,8 +283,50 @@ public class BackgroundTask extends AsyncTask <String, Void, String>{
                  } catch (IOException e) {
                      e.printStackTrace();
                  }
+             break;
+             case "programme":
 
-         }
+                 //Récupération paramètres
+                 String loginP = idP;
+
+                 //Création de l'url d'accès a la page php + paramétrage + stockage dans le buffer
+                 try {
+                     URL url = new URL(url_programme);
+                     HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                     httpURLConnection.setRequestMethod("POST");
+                     httpURLConnection.setDoOutput(true);
+                     httpURLConnection.setDoInput(true);
+                     OutputStream outputStream = httpURLConnection.getOutputStream();
+                     BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+                     String data = URLEncoder.encode("login", "UTF-8") + "=" + URLEncoder.encode(loginP, "UTF-8");
+                     bufferedWriter.write(data);
+                     bufferedWriter.flush();
+                     bufferedWriter.close();
+                     outputStream.close();
+                     InputStream inputStream = httpURLConnection.getInputStream();
+                     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
+                     String response = "";
+                     String line = "";
+
+                     //Lecture du resultat retourné
+                     while ((line = bufferedReader.readLine()) != null) {
+                         response += line;
+                     }
+
+                     //Fermeture des objets
+                     bufferedReader.close();
+                     inputStream.close();
+                     httpURLConnection.disconnect();
+
+                     //retour de la réponse
+                     return response;
+
+                 } catch (MalformedURLException e) {
+                     e.printStackTrace();
+                 } catch (IOException e) {
+                     e.printStackTrace();
+                 }
+                 break;         }
 
 
             return null;
@@ -300,6 +345,7 @@ public class BackgroundTask extends AsyncTask <String, Void, String>{
 
     @Override
     protected void onPostExecute(String result) {
+        Intent retour;
         values = result.split("-");
         switch (values[0]) {
             case "connexionOK": //Connexion application réussie
@@ -374,7 +420,7 @@ public class BackgroundTask extends AsyncTask <String, Void, String>{
                 alertnewMdpModifKO.show();
                 break;
             case "retourSeance": //retour de la séance
-                Intent retour = new Intent(ctx, Seance.class);
+                retour = new Intent(ctx, Seance.class);
                 retour.putExtra(EXTRAT_IDP,idP);
                 retour.putExtra(EXTRAT_RETOUR,result);
                 ctx.startActivity(retour);
@@ -395,6 +441,12 @@ public class BackgroundTask extends AsyncTask <String, Void, String>{
                         });
                 AlertDialog alertnoterSeanceKO = builder.create();
                 alertnoterSeanceKO.show();
+                break;
+            case "retourProgramme": //retour de la séance
+                retour = new Intent(ctx, Programme.class);
+                retour.putExtra(EXTRAT_IDP,idP);
+                retour.putExtra(EXTRAT_RETOUR,result);
+                ctx.startActivity(retour);
                 break;
             default :
                 builder.setTitle("Erreur système")

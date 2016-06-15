@@ -15,9 +15,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/spinner"
         android:layout_below="@+id/tv_choixSeance"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="25dp" />
+        android:layout_marginTop="10dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <ImageButton
         android:layout_width="50dp"
@@ -30,12 +30,14 @@
         android:background="#ffffff"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="0dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Choisissez la séance à noter :"
+        android:text="Sélectionner la séance à noter :"
         android:id="@+id/tv_choixSeance"
         android:textAlignment="textStart"
         android:textSize="20dp"
@@ -47,24 +49,14 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/spinner"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:visibility="visible"
         android:id="@+id/rv_notation"
-        android:layout_marginTop="30dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="La douleur : \n 0 : Insupportable 10 : Trop facile"
-            android:id="@+id/tv_note"
-            android:textAlignment="textStart"
-            android:textSize="20dp"
-            android:textColor="#284051"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+        android:layout_below="@+id/spinner"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/spinner"
+        android:layout_alignEnd="@+id/spinner">
 
         <TextView
             android:layout_width="wrap_content"
@@ -74,20 +66,22 @@
             android:textAlignment="textStart"
             android:textSize="20dp"
             android:textColor="#284051"
-            android:layout_centerVertical="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_below="@+id/listeDouleur"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp" />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/et_commentaireSeance"
-            android:layout_below="@+id/tv_commentaire"
+            android:layout_above="@+id/buttonValider"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:layout_above="@+id/buttonValider" />
+            android:layout_marginBottom="5dp"
+            android:layout_below="@+id/tv_commentaire"
+            android:layout_marginTop="15dp" />
 
         <Button
             android:layout_width="wrap_content"
@@ -103,15 +97,42 @@
             android:contextClickable="true"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:onClick="buttonValiderNotationOnClick" />
+            android:onClick="buttonValiderNotationOnClick"
+            android:layout_marginTop="15dp" />
 
         <Spinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/listeDouleur"
-            android:layout_below="@+id/tv_note"
+            android:layout_below="@+id/imageView2"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="20dp"
+            android:touchscreenBlocksFocus="false" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView2"
+            android:src="@mipmap/echelle_douleur"
+            android:scaleType="fitStart"
+            android:layout_below="@+id/textView"
+            android:layout_alignRight="@+id/buttonValider"
+            android:layout_alignEnd="@+id/buttonValider"
+            android:layout_marginTop="15dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="La séance a été dure ? "
+            android:id="@+id/textView"
+            android:textAlignment="textStart"
+            android:textSize="20dp"
+            android:textColor="#284051"
+            android:autoText="false"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
     </RelativeLayout>
 
 </RelativeLayout>
