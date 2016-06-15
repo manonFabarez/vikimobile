@@ -39,6 +39,7 @@ public class Connexion extends AppCompatActivity {
 
        if(CB_MEMORISER.isChecked())
         {
+
             sp = getSharedPreferences("myPref", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sp.edit();
             editor.putString("login", ET_IDENT.getText().toString());
