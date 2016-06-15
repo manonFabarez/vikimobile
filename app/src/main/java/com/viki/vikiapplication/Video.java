@@ -11,5 +11,7 @@ public class Video extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
     /*   voir code : https://www.youtube.com/watch?v=SiD77g9KfhA */
+
+
     }
 }
