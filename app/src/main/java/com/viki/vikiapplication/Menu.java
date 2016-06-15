@@ -3,6 +3,7 @@ package com.viki.vikiapplication;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.support.v7.app.AppCompatActivity;
@@ -14,7 +15,10 @@ import android.widget.EditText;
 public class Menu extends AppCompatActivity {
 
     String idP;
-    final String EXTRAT_IDP = "idP";
+    final String EXTRAT_IDP = "id";
+
+    String method;
+    BackgroundTask backgroundTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +39,7 @@ public class Menu extends AppCompatActivity {
             case R.id.bt_menu_programme :
                 //Passement des infos dans une tâche en arrière plan : class BackGroundTask
                 method = "programme";
-                BackgroundTask backgroundTaskP = new BackgroundTask(this);
+                backgroundTaskP = new BackgroundTask(this);
 
                 //Exécution tache en arrière plan + paramètres necessaires à la taches
                 backgroundTaskP.execute(method,idP);
@@ -50,15 +54,20 @@ public class Menu extends AppCompatActivity {
             case R.id.bt_menu_seance :
                 //Passement des infos dans une tâche en arrière plan : class BackGroundTask
                 method = "seance";
-                BackgroundTask backgroundTask = new BackgroundTask(this);
+                backgroundTask = new BackgroundTask(this);
 
-                //Exécution tache en arrière plan + paramètres necessaires à la taches
+                //Exécution tache en arrière plan + paramètres necessaires à la tache
                 backgroundTask.execute(method,idP);
 
                 break;
             case R.id.bt_menu_resultat :
-                Intent l = new Intent(getApplicationContext(),Resultat.class);
-                startActivity(l);
+
+                //Passement des infos dans une tâche en arrière plan : class BackGroundTask
+                method = "resultat";
+                backgroundTask = new BackgroundTask(this);
+
+                //Exécution tache en arrière plan + paramètres necessaires à la tache
+                backgroundTask.execute(method,idP);
                 break;
             case R.id.bt_menu_conseil :
                 Intent m = new Intent(getApplicationContext(),Conseil.class);

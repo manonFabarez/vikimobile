@@ -7,6 +7,123 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.viki.vikiapplication.Resultat">
+    tools:context="com.viki.vikiapplication.Resultat"
+    android:background="#ffffff">
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner_graphique"
+        android:layout_below="@+id/tv_graphique"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="25dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choisissez un graphique :"
+        android:id="@+id/tv_graphique"
+        android:textAlignment="textStart"
+        android:textSize="20dp"
+        android:textColor="#284051"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/bt_deconnexion"
+        android:layout_toStartOf="@+id/bt_deconnexion" />
+
+    <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/bt_deconnexion"
+        android:onClick="buttonDecoOnClick"
+        android:src="@mipmap/bt_deconnexion"
+        android:clickable="true"
+        android:scaleType="center"
+        android:background="#ffffff"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <WebView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/webView"
+        android:layout_below="@+id/spinner_graphique"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/spinner_graphique"
+        android:layout_alignEnd="@+id/spinner_graphique"
+        android:visibility="visible" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Vous êtes soigné pour : "
+        android:id="@+id/tv_programme"
+        android:layout_below="@+id/spinner_graphique"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="30dp"
+        android:textSize="20dp"
+        android:textColor="#284051"
+        android:layout_alignRight="@+id/bt_deconnexion"
+        android:layout_alignEnd="@+id/bt_deconnexion" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_nomProgramme"
+        android:minHeight="30dp"
+        android:minWidth="350dp"
+        android:textColor="#8e0000"
+        android:layout_below="@+id/tv_programme"
+        android:layout_alignParentStart="false"
+        android:layout_marginTop="10dp"
+        android:clickable="false"
+        android:cursorVisible="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date de début du programme : "
+        android:id="@+id/tv_dateProg"
+        android:textSize="20dp"
+        android:textColor="#284051"
+        android:layout_below="@+id/et_nomProgramme"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/et_nomProgramme"
+        android:layout_alignEnd="@+id/et_nomProgramme" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_DateDebProg"
+        android:minHeight="30dp"
+        android:minWidth="350dp"
+        android:textColor="#8e0000"
+        android:layout_below="@+id/tv_dateProg"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:clickable="false"
+        android:cursorVisible="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Vous êtes soigné depuis xx jours"
+        android:id="@+id/tv_nbJours"
+        android:textSize="20dp"
+        android:textColor="#284051"
+        android:layout_below="@+id/et_DateDebProg"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="48dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

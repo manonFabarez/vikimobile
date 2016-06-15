@@ -31,6 +31,7 @@ public class BackgroundTask extends AsyncTask <String, Void, String>{
     //Variables
     final String EXTRAT_IDP = "idP";
     final String EXTRAT_RETOUR = "retourSeance";
+    final String EXTRAT_RESULTAT = "resultatSeance";
     static String idP, resultat;
     String values[] = new String[2];
     Context ctx;
@@ -51,6 +52,7 @@ public class BackgroundTask extends AsyncTask <String, Void, String>{
         String url_seance = "http://virtual-kine.ddns.net/mobile/seance.php";
         String url_noterseance = "http://virtual-kine.ddns.net/mobile/noterseance.php";
         String url_programme = "http://virtual-kine.ddns.net/mobile/programme.php";
+        String url_resultatseance = "http://virtual-kine.ddns.net/mobile/resultat.php";
 
         //En fonction du nom de la méthode passée en paramètre -->Action
          switch (method) {
@@ -234,7 +236,6 @@ public class BackgroundTask extends AsyncTask <String, Void, String>{
                      e.printStackTrace();
                  }
                  break;
-
              case "noterseance":
 
                  //Récupération paramètres
@@ -256,6 +257,49 @@ public class BackgroundTask extends AsyncTask <String, Void, String>{
                              URLEncoder.encode("dateSeance", "UTF-8") + "=" + URLEncoder.encode(dateSeance, "UTF-8") + "&" +
                              URLEncoder.encode("noteSeance", "UTF-8") + "=" + URLEncoder.encode(noteSeance, "UTF-8") + "&" +
                              URLEncoder.encode("commentaireSeance", "UTF-8") + "=" + URLEncoder.encode(commentaireSeance, "UTF-8");
+                     bufferedWriter.write(data);
+                     bufferedWriter.flush();
+                     bufferedWriter.close();
+                     outputStream.close();
+                     InputStream inputStream = httpURLConnection.getInputStream();
+                     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
+                     String response = "";
+                     String line = "";
+
+                     //Lecture du resultat retourné
+                     while ((line = bufferedReader.readLine()) != null) {
+                         response += line;
+                     }
+
+                     //Fermeture des objets
+                     bufferedReader.close();
+                     inputStream.close();
+                     httpURLConnection.disconnect();
+
+                     //retour de la réponse
+                     return response;
+
+                 } catch (MalformedURLException e) {
+                     e.printStackTrace();
+                 } catch (IOException e) {
+                     e.printStackTrace();
+                 }
+                 break;
+             case "resultat":
+
+                 //Récupération paramètres
+                 String loginRes = params[1];
+
+                 //Création de l'url d'accès a la page php + paramétrage + stockage dans le buffer
+                 try {
+                     URL url = new URL(url_resultatseance);
+                     HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                     httpURLConnection.setRequestMethod("POST");
+                     httpURLConnection.setDoOutput(true);
+                     httpURLConnection.setDoInput(true);
+                     OutputStream outputStream = httpURLConnection.getOutputStream();
+                     BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+                     String data = URLEncoder.encode("loginRes", "UTF-8") + "=" + URLEncoder.encode(loginRes, "UTF-8");
                      bufferedWriter.write(data);
                      bufferedWriter.flush();
                      bufferedWriter.close();
@@ -441,6 +485,11 @@ public class BackgroundTask extends AsyncTask <String, Void, String>{
                         });
                 AlertDialog alertnoterSeanceKO = builder.create();
                 alertnoterSeanceKO.show();
+                break;
+            case "resultatSeance": //retour de la séance
+                Intent resultat = new Intent(ctx,Resultat.class);
+                resultat.putExtra(EXTRAT_RESULTAT,result);
+                ctx.startActivity(resultat);
                 break;
             case "retourProgramme": //retour de la séance
                 retour = new Intent(ctx, Programme.class);
