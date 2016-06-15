@@ -15,6 +15,7 @@ public class Connexion extends AppCompatActivity {
 
     //Variables
     EditText ET_IDENT, ET_PASS;
+    CheckBox CB_MEMORISER;
     String login_ident, login_pass;
     SharedPreferences sp;
 
@@ -26,12 +27,15 @@ public class Connexion extends AppCompatActivity {
         //Récupération des valeurs
         ET_IDENT = (EditText)findViewById(R.id.user_ident);
         ET_PASS = (EditText)findViewById(R.id.user_pass);
+
     }
 
     public void buttonOnClick(View V) {
         //Récupération de l'info dans un string
         login_ident = ET_IDENT.getText().toString();
         login_pass = ET_PASS.getText().toString();
+
+
 
         //Passement des infos dans une tâche en arrière plan : class BackGroundTask
         String method = "login";
