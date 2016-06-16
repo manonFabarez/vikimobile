@@ -42,15 +42,13 @@ public class Menu extends AppCompatActivity {
                 startActivity(i);
                 break;
             case R.id.bt_menu_video :
-                Intent j = new Intent(getApplicationContext(),Video.class);
-                startActivity(j);
+                //Passement des infos dans une tâche en arrière plan : class BackGroundTask
+                method = "exempleexo";
+                backgroundTask = new BackgroundTask(this);
 
-                Log.v("BTNVIDEO","clic bouton video");
+                //Exécution tache en arrière plan + paramètres necessaires à la tache
+                backgroundTask.execute(method,idP);
 
-                /*Intent videoPlaybackActivity = new Intent(this, Video.class);
-                int res=this.getResources().getIdentifier("videoflexioncoude.mp4", "raw", getPackageName());
-                videoPlaybackActivity.putExtra("fileRes", res);
-                startActivity(videoPlaybackActivity);*/
                 break;
             case R.id.bt_menu_seance :
                 //Passement des infos dans une tâche en arrière plan : class BackGroundTask

@@ -32,6 +32,7 @@ public class BackgroundTask extends AsyncTask <String, Void, String>{
     final String EXTRAT_IDP = "idP";
     final String EXTRAT_RETOUR = "retourSeance";
     final String EXTRAT_RESULTAT = "resultatSeance";
+    final String EXTRAT_VIDEO = "exempleExo";
     static String idP, resultat;
     String values[] = new String[2];
     Context ctx;
@@ -53,6 +54,7 @@ public class BackgroundTask extends AsyncTask <String, Void, String>{
         String url_noterseance = "http://virtual-kine.ddns.net/mobile/noterseance.php";
         String url_programme = "http://virtual-kine.ddns.net/mobile/programme.php";
         String url_resultatseance = "http://virtual-kine.ddns.net/mobile/resultat.php";
+        String url_exempleexo = "http://virtual-kine.ddns.net/mobile/exempleexo.php";
 
         //En fonction du nom de la méthode passée en paramètre -->Action
          switch (method) {
@@ -327,7 +329,51 @@ public class BackgroundTask extends AsyncTask <String, Void, String>{
                  } catch (IOException e) {
                      e.printStackTrace();
                  }
-             break;
+                 break;
+             case "exempleexo":
+
+                 //Récupération paramètres
+                 String loginP = params[1];
+
+                 //Création de l'url d'accès a la page php + paramétrage + stockage dans le buffer
+                 try {
+                     URL url = new URL(url_exempleexo);
+                     HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                     httpURLConnection.setRequestMethod("POST");
+                     httpURLConnection.setDoOutput(true);
+                     httpURLConnection.setDoInput(true);
+                     OutputStream outputStream = httpURLConnection.getOutputStream();
+                     BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+                     String data = URLEncoder.encode("login", "UTF-8") + "=" + URLEncoder.encode(loginP, "UTF-8");
+                     bufferedWriter.write(data);
+                     bufferedWriter.flush();
+                     bufferedWriter.close();
+                     outputStream.close();
+                     InputStream inputStream = httpURLConnection.getInputStream();
+                     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
+                     String response = "";
+                     String line = "";
+
+                     //Lecture du resultat retourné
+                     while ((line = bufferedReader.readLine()) != null) {
+                         response += line;
+                     }
+
+                     //Fermeture des objets
+                     bufferedReader.close();
+                     inputStream.close();
+                     httpURLConnection.disconnect();
+
+                     //retour de la réponse
+                     return response;
+
+                 } catch (MalformedURLException e) {
+                     e.printStackTrace();
+                 } catch (IOException e) {
+                     e.printStackTrace();
+                 }
+                 break;
+
          }
             return null;
     }
@@ -442,15 +488,21 @@ public class BackgroundTask extends AsyncTask <String, Void, String>{
                 AlertDialog alertnoterSeanceKO = builder.create();
                 alertnoterSeanceKO.show();
                 break;
-            case "resultatSeance": //retour de la séance
+            case "resultatSeance": //retour du resultat-statistique
                 Intent resultat = new Intent(ctx,Resultat.class);
                 resultat.putExtra(EXTRAT_RESULTAT,result);
                 ctx.startActivity(resultat);
                 break;
-            case "retourProgramme": //retour de la séance
+            case "retourProgramme": //retour du programme
                 retour = new Intent(ctx, Programme.class);
                 retour.putExtra(EXTRAT_IDP,idP);
                 retour.putExtra(EXTRAT_RETOUR,result);
+                ctx.startActivity(retour);
+                break;
+            case "exempleExo": //retour des exemples videos
+                retour = new Intent(ctx, Video.class);
+                retour.putExtra(EXTRAT_IDP,idP);
+                retour.putExtra(EXTRAT_VIDEO,result);
                 ctx.startActivity(retour);
                 break;
             default :
