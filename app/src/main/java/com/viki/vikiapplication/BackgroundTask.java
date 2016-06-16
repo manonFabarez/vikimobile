@@ -327,11 +327,12 @@ public class BackgroundTask extends AsyncTask <String, Void, String>{
                  } catch (IOException e) {
                      e.printStackTrace();
                  }
-             break;
+                 break;
              case "programme":
 
                  //Récupération paramètres
-                 String loginP = idP;
+                 //String loginP = idP;
+                 String loginP = params[1];
 
                  //Création de l'url d'accès a la page php + paramétrage + stockage dans le buffer
                  try {
