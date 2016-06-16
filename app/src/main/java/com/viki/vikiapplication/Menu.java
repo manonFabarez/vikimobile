@@ -37,15 +37,9 @@ public class Menu extends AppCompatActivity {
 
         switch(V.getId()){
             case R.id.bt_menu_programme :
-                //Passement des infos dans une tâche en arrière plan : class BackGroundTask
-                method = "programme";
-                backgroundTaskP = new BackgroundTask(this);
 
-                //Exécution tache en arrière plan + paramètres necessaires à la taches
-                backgroundTaskP.execute(method,idP);
-
-               /* Intent i = new Intent(getApplicationContext(),Programme.class);
-                startActivity(i);*/
+                Intent i = new Intent(getApplicationContext(),Programme.class);
+                startActivity(i);
                 break;
             case R.id.bt_menu_video :
                 Intent j = new Intent(getApplicationContext(),Video.class);
