@@ -327,53 +327,8 @@ public class BackgroundTask extends AsyncTask <String, Void, String>{
                  } catch (IOException e) {
                      e.printStackTrace();
                  }
-                 break;
-             case "programme":
-
-                 //Récupération paramètres
-                 //String loginP = idP;
-                 String loginP = params[1];
-
-                 //Création de l'url d'accès a la page php + paramétrage + stockage dans le buffer
-                 try {
-                     URL url = new URL(url_programme);
-                     HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
-                     httpURLConnection.setRequestMethod("POST");
-                     httpURLConnection.setDoOutput(true);
-                     httpURLConnection.setDoInput(true);
-                     OutputStream outputStream = httpURLConnection.getOutputStream();
-                     BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
-                     String data = URLEncoder.encode("login", "UTF-8") + "=" + URLEncoder.encode(loginP, "UTF-8");
-                     bufferedWriter.write(data);
-                     bufferedWriter.flush();
-                     bufferedWriter.close();
-                     outputStream.close();
-                     InputStream inputStream = httpURLConnection.getInputStream();
-                     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
-                     String response = "";
-                     String line = "";
-
-                     //Lecture du resultat retourné
-                     while ((line = bufferedReader.readLine()) != null) {
-                         response += line;
-                     }
-
-                     //Fermeture des objets
-                     bufferedReader.close();
-                     inputStream.close();
-                     httpURLConnection.disconnect();
-
-                     //retour de la réponse
-                     return response;
-
-                 } catch (MalformedURLException e) {
-                     e.printStackTrace();
-                 } catch (IOException e) {
-                     e.printStackTrace();
-                 }
-                 break;         }
-
-
+             break;
+         }
             return null;
     }
 
