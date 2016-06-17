@@ -70,8 +70,9 @@ public class Menu extends AppCompatActivity {
                 backgroundTask.execute(method,idP);
                 break;
             case R.id.bt_menu_conseil :
-                Intent m = new Intent(getApplicationContext(),Conseil.class);
-                startActivity(m);
+                Intent j = new Intent(getApplicationContext(),Conseil.class);
+
+                startActivity(j);
                 break;
             case R.id.bt_menu_notif :
                 Intent n = new Intent(getApplicationContext(),Notification.class);
