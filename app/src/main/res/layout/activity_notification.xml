@@ -29,7 +29,9 @@
         android:id="@+id/textView3"
         android:layout_below="@+id/imageView3"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp" />
+        android:layout_marginTop="20dp"
+        android:clickable="true"
+        android:autoLink="all" />
 
     <ImageView
         android:layout_width="wrap_content"
