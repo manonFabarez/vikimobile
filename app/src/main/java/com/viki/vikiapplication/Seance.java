@@ -57,6 +57,7 @@ public class Seance extends AppCompatActivity implements AdapterView.OnItemSelec
         // Spinner click listener
         spinner.setOnItemSelectedListener(this);
 
+
         // Spinner Drop down elements
         List<String> categories = new ArrayList<String>();
         categories.add("");
