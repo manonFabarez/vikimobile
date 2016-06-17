@@ -4,6 +4,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -44,6 +45,8 @@ public class GCMPushReceiverService  extends GcmListenerService{
                 .setContentTitle(title)
                 .setContentText(message)
                 .setSubText(subtitle)
+                .setVibrate(new long[] { 1000, 1000, 1000, 1000, 1000 })
+                .setLights(Color.RED, 3000, 3000)
                 .setAutoCancel(true)
                 .setContentIntent(pendingIntent);
         NotificationManager notificationManager =(NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);

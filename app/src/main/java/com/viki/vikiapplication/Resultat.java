@@ -100,13 +100,22 @@ public class Resultat extends AppCompatActivity implements AdapterView.OnItemSel
                 etDateDebProg.setText(list[2].substring(0,10));
                 dateProg = list[2].substring(0,10);
                 if(z==ligne.length-1){
-                    chxr+=list[3].substring(0,10);
-                    note+=list[4];
-                    chm+="d,4d89f9,0,"+z+",12,0";
+
+                    if(!list[4].equals("99"))
+                    {
+                        chxr+=list[3].substring(0,10);
+                        note+=list[4];
+                        chm+="d,4d89f9,0,"+z+",12,0";
+                    }
+
                 }else{
-                    chxr = chxr + list[3].substring(0,10)+"|";
-                    note+=list[4]+",";
-                    chm+="d,4d89f9,0,"+z+",12,0"+"|";
+
+                    if(!list[4].equals("99")){
+                        chxr = chxr + list[3].substring(0,10)+"|";
+                        note+=list[4]+",";
+                        chm+="d,4d89f9,0,"+z+",12,0"+"|";
+                    }
+
                 }
 
             }
