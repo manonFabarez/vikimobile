@@ -33,6 +33,7 @@ public class BackgroundTask extends AsyncTask <String, Void, String>{
     final String EXTRAT_RETOUR = "retourSeance";
     final String EXTRAT_RESULTAT = "resultatSeance";
     final String EXTRAT_VIDEO = "exempleExo";
+    final String EXTRAT_CONSEIL = "retourConseil";
     static String idP, resultat;
     String values[] = new String[2];
     Context ctx;
@@ -52,9 +53,9 @@ public class BackgroundTask extends AsyncTask <String, Void, String>{
         String url_newMdp = "http://virtual-kine.ddns.net/mobile/newMdp.php";
         String url_seance = "http://virtual-kine.ddns.net/mobile/seance.php";
         String url_noterseance = "http://virtual-kine.ddns.net/mobile/noterseance.php";
-        String url_programme = "http://virtual-kine.ddns.net/mobile/programme.php";
         String url_resultatseance = "http://virtual-kine.ddns.net/mobile/resultat.php";
         String url_exempleexo = "http://virtual-kine.ddns.net/mobile/exempleexo.php";
+        String url_conseil = "http://virtual-kine.ddns.net/mobile/conseil.php";
 
         //En fonction du nom de la méthode passée en paramètre -->Action
          switch (method) {
@@ -373,6 +374,44 @@ public class BackgroundTask extends AsyncTask <String, Void, String>{
                      e.printStackTrace();
                  }
                  break;
+             case "conseil":
+
+                 //Création de l'url d'accès a la page php + paramétrage + stockage dans le buffer
+                 try {
+                     URL url = new URL(url_conseil);
+                     HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                     httpURLConnection.setRequestMethod("POST");
+                     httpURLConnection.setDoOutput(true);
+                     httpURLConnection.setDoInput(true);
+                     OutputStream outputStream = httpURLConnection.getOutputStream();
+                     BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+                     bufferedWriter.flush();
+                     bufferedWriter.close();
+                     outputStream.close();
+                     InputStream inputStream = httpURLConnection.getInputStream();
+                     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
+                     String response = "";
+                     String line = "";
+
+                     //Lecture du resultat retourné
+                     while ((line = bufferedReader.readLine()) != null) {
+                         response += line;
+                     }
+
+                     //Fermeture des objets
+                     bufferedReader.close();
+                     inputStream.close();
+                     httpURLConnection.disconnect();
+
+                     //retour de la réponse
+                     return response;
+
+                 } catch (MalformedURLException e) {
+                     e.printStackTrace();
+                 } catch (IOException e) {
+                     e.printStackTrace();
+                 }
+                 break;
 
          }
             return null;
@@ -499,6 +538,11 @@ public class BackgroundTask extends AsyncTask <String, Void, String>{
                 retour.putExtra(EXTRAT_VIDEO,result);
                 ctx.startActivity(retour);
 
+                break;
+            case "retourConseil": //retour du resultat-statistique
+                Intent conseil = new Intent(ctx,Conseil.class);
+                conseil.putExtra(EXTRAT_CONSEIL,result);
+                ctx.startActivity(conseil);
                 break;
             default :
                 builder.setTitle("Erreur système")
