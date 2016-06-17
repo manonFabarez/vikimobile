@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.google.android.gms.common.api.GoogleApiClient;
 
@@ -26,6 +27,8 @@ public class Seance extends AppCompatActivity implements AdapterView.OnItemSelec
     String select;
     final String EXTRAT_RETOUR = "retourSeance";
     String idP;
+    TextView tvnoseance, tvchoiceseance;
+    int testDonnees;
     final String EXTRAT_IDP = "idP";
     ArrayAdapter<String> dataAdapter;
 
@@ -47,6 +50,9 @@ public class Seance extends AppCompatActivity implements AdapterView.OnItemSelec
         rv_not = (RelativeLayout) findViewById(R.id.rv_notation);
         rv_not.setVisibility(View.INVISIBLE);
         listNote = (Spinner) findViewById(R.id.listeDouleur);
+        tvnoseance = (TextView) findViewById(R.id.tv_noseance);
+        tvnoseance.setVisibility(View.INVISIBLE);
+        tvchoiceseance = (TextView) findViewById(R.id.tv_choixSeance);
 
         // Spinner click listener
         spinner.setOnItemSelectedListener(this);
@@ -54,12 +60,18 @@ public class Seance extends AppCompatActivity implements AdapterView.OnItemSelec
         // Spinner Drop down elements
         List<String> categories = new ArrayList<String>();
         categories.add("");
-        String traitement = select.substring(12);
+        String traitement = select.substring(13);
         String[] ligne = traitement.split(";");
-        for(int z=0; z<ligne.length; z++) {
-            String[] list = ligne[z].split(",");
-            categories.add(list[1].substring(0,10));
+        testDonnees = traitement.length();
+        if(testDonnees!=0)
+        {
+            for(int z=0; z<ligne.length; z++) {
+                String[] list = ligne[z].split(",");
+                categories.add(list[1].substring(0,10));
+            }
         }
+
+
 
         // Creating adapter for spinner
         dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
@@ -106,6 +118,13 @@ public class Seance extends AppCompatActivity implements AdapterView.OnItemSelec
                 rv_not.setVisibility(View.VISIBLE);
             } else {
                 rv_not.setVisibility(View.INVISIBLE);
+                if(testDonnees==0)
+                {
+                    spinner.setVisibility(View.INVISIBLE);
+                    tvnoseance.setVisibility(View.VISIBLE);
+                    tvchoiceseance.setVisibility(View.INVISIBLE);
+
+                }
             }
         }
     }
@@ -136,10 +155,17 @@ public class Seance extends AppCompatActivity implements AdapterView.OnItemSelec
         //Exécution tache en arrière plan + paramètres necessaires à la taches
         backgroundTask.execute(method,idP, dateSeance, noteSeance, commentaireSeance);
 
+        listNote.setSelection(0);
         rv_not.setVisibility(View.INVISIBLE);
         dataAdapter.remove(dateSeance);
-        dataAdapter.getItem(0);
-        dataAdapter.notifyDataSetChanged();
+        spinner.setSelection(0);
+        if(dataAdapter.getCount()==1)
+        {
+                spinner.setVisibility(View.INVISIBLE);
+                tvnoseance.setVisibility(View.VISIBLE);
+                tvchoiceseance.setVisibility(View.INVISIBLE);
+        }
+
     }
 
 
