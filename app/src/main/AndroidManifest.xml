@@ -79,6 +79,10 @@
             android:label="Exemples en vidéo"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".Seance"
+            android:label="Mes séances"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".Resultat"
             android:label="Mes résultats"
             android:screenOrientation="portrait" />
