@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.webkit.WebView;
 
 public class Programme extends AppCompatActivity {
@@ -26,6 +27,14 @@ public class Programme extends AppCompatActivity {
             idP = i.getStringExtra(EXTRAT_IDP);
         }
 
-        programme.loadUrl("http://virtual-kine.ddns.net/mobile/programme.php?idP=1");
+        programme.loadUrl("http://virtual-kine.ddns.net/mobile/programme.php?idP="+idP);
+    }
+
+    public void buttonDecoOnClick(View v) {
+        Intent homeIntent = new Intent(getApplicationContext(), Connexion.class);
+        //Remise à zéro de l'application
+        homeIntent.addCategory(Intent.CATEGORY_HOME);
+        homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(homeIntent);
     }
 }
