@@ -504,6 +504,7 @@ public class BackgroundTask extends AsyncTask <String, Void, String>{
                 retour.putExtra(EXTRAT_IDP,idP);
                 retour.putExtra(EXTRAT_VIDEO,result);
                 ctx.startActivity(retour);
+
                 break;
             default :
                 builder.setTitle("Erreur système")
