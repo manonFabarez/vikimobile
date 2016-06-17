@@ -15,7 +15,6 @@ public class Connexion extends AppCompatActivity {
 
     //Variables
     EditText ET_IDENT, ET_PASS;
-    CheckBox CB_MEMORISER;
     String login_ident, login_pass;
     SharedPreferences sp;
 

@@ -12,8 +12,8 @@
 
 
     <ImageButton
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="20dp"
+        android:layout_height="25dp"
         android:id="@+id/bt_deconnexion"
         android:onClick="buttonDecoOnClick"
         android:src="@mipmap/bt_deconnexion"
@@ -41,7 +41,8 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:layout_below="@+id/scrollView" />
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="0dp" />
 
         <ScrollView
             android:layout_width="wrap_content"
@@ -51,5 +52,19 @@
             android:layout_toRightOf="@+id/programme"
             android:layout_toEndOf="@+id/programme" />
     </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Quels exercices dois-je faire ? "
+        android:id="@+id/textView7"
+        android:textColor="#8e0000"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp" />
 
 </RelativeLayout>

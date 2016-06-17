@@ -11,8 +11,8 @@
     android:background="#ffffff">
 
     <ImageButton
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="20dp"
+        android:layout_height="25dp"
         android:id="@+id/bt_deconnexion"
         android:onClick="buttonOnClick"
         android:src="@mipmap/bt_deconnexion"
