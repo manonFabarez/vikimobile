@@ -42,7 +42,7 @@ public class Resultat extends AppCompatActivity implements AdapterView.OnItemSel
 
         // Spinner Drop down elements
         List<String> categories = new ArrayList<String>();
-        categories.add("Général");
+        categories.add("Informations Générales");
         categories.add("Evolution de la douleur");
 
         // Creating adapter for spinner
@@ -122,7 +122,6 @@ public class Resultat extends AppCompatActivity implements AdapterView.OnItemSel
                         "chls=3,1,0&" +
                         "chm="+chm+"&chg=0,6.67,5,5&chdl=Note par séance");
             } else {
-
 
                 //Mise en forme de la date de début du programme pour pouvoir calculer le nombre de jours entre celle-ci et aujourd'hui
                 String[] dateProgSub = dateProg.split("-");

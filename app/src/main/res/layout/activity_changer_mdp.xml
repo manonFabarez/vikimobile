@@ -48,7 +48,7 @@
         android:layout_below="@+id/TV_ChgerMdp_AncienMDP"
         android:layout_alignParentStart="true"
         android:layout_marginTop="1dp"
-        android:textColor="#284051" />
+        android:textColor="#8e0202" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -71,7 +71,7 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/tv_ChgerMdp_NewMdp"
         android:layout_alignParentLeft="true"
-        android:textColor="#284051" />
+        android:textColor="#8e0202" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -95,5 +95,5 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/tv_ChgerMdp_Confirmation"
         android:layout_alignParentLeft="true"
-        android:textColor="#284051" />
+        android:textColor="#8e0202" />
 </RelativeLayout>

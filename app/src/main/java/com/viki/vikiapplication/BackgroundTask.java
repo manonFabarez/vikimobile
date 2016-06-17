@@ -504,12 +504,6 @@ public class BackgroundTask extends AsyncTask <String, Void, String>{
                 AlertDialog alertnewMdpModifKO = builder.create();
                 alertnewMdpModifKO.show();
                 break;
-            case "retourSeance": //retour de la séance
-                retour = new Intent(ctx, Seance.class);
-                retour.putExtra(EXTRAT_IDP,idP);
-                retour.putExtra(EXTRAT_RETOUR,result);
-                ctx.startActivity(retour);
-                break;
             case "noterseanceOK": //Notation de la séance OK
                 Toast.makeText(ctx,
                         "Merci d'avoir noter cette séance !",
