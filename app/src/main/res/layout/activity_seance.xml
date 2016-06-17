@@ -10,6 +10,7 @@
     tools:context="com.viki.vikiapplication.Seance"
     android:background="#ffffff">
 
+
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

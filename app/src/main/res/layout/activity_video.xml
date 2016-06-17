@@ -17,7 +17,7 @@
         android:layout_below="@+id/tv_exercice"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="25dp" />
+        android:layout_marginTop="10dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -27,13 +27,13 @@
         android:textAlignment="textStart"
         android:textSize="20dp"
         android:textColor="#284051"
-        android:layout_alignParentTop="true"
-        android:layout_toLeftOf="@+id/bt_deconnexion"
-        android:layout_toStartOf="@+id/bt_deconnexion" />
+        android:layout_below="@+id/textView8"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp" />
 
     <ImageButton
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="20dp"
+        android:layout_height="25dp"
         android:id="@+id/bt_deconnexion"
         android:onClick="buttonDecoOnClick"
         android:src="@mipmap/bt_deconnexion"
@@ -51,6 +51,15 @@
         android:layout_gravity="center"
         android:layout_below="@+id/spinner_exercice" />
 
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView3"
+        android:layout_alignTop="@+id/myvideoview"
+        android:layout_marginTop="156dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -65,5 +74,20 @@
         android:layout_alignParentEnd="true"
         android:textAlignment="center"
         android:textSize="30dp"
-        android:textStyle="normal" />
+        android:textStyle="italic"
+        android:textColor="#8e0000" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Besoin d&apos;aide  ? "
+        android:id="@+id/textView8"
+        android:textColor="#8e0000"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:textSize="19dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>
