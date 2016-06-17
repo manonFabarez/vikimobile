@@ -397,7 +397,7 @@ public class BackgroundTask extends AsyncTask <String, Void, String>{
             case "connexionOK": //Connexion application réussie
                 idP = values[1];
                 Intent i = new Intent(ctx, Menu.class);
-                i.putExtra("id",idP);
+                i.putExtra(EXTRAT_IDP,idP);
                 ctx.startActivity(i);
                 break;
             case "connexionKO": //Connexion application echec

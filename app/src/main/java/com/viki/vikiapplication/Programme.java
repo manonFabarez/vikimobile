@@ -10,7 +10,7 @@ public class Programme extends AppCompatActivity {
 
     WebView programme;
 
-    String idP = "cc";
+    String idP ;
     final String EXTRAT_IDP = "idP";
 
 
@@ -24,9 +24,9 @@ public class Programme extends AppCompatActivity {
         Intent i = getIntent();
         if(i != null){
             idP = i.getStringExtra(EXTRAT_IDP);
-            Log.v("IDENT", idP);
+            Log.v("ident",idP);
         }
 
-//        programme.loadUrl("http://virtual-kine.ddns.net/mobile/programme.php?idP="+idP);*/
+        programme.loadUrl("http://virtual-kine.ddns.net/mobile/programme.php?idP=1");
     }
 }

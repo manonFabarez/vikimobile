@@ -38,7 +38,6 @@ public class Menu extends AppCompatActivity {
 
         switch(V.getId()){
             case R.id.bt_menu_programme :
-
                 Intent i = new Intent(getApplicationContext(),Programme.class);
                 i.putExtra(EXTRAT_IDP,idP);
                 startActivity(i);
