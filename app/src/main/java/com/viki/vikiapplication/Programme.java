@@ -18,13 +18,12 @@ public class Programme extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_programme);
-        programme = (WebView) findViewById(R.id.webView);
+        programme = (WebView) findViewById(R.id.programme);
 
         //Récupération de l'id du patient
         Intent i = getIntent();
         if(i != null){
             idP = i.getStringExtra(EXTRAT_IDP);
-            Log.v("ident",idP);
         }
 
         programme.loadUrl("http://virtual-kine.ddns.net/mobile/programme.php?idP=1");
