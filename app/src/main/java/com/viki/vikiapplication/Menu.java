@@ -15,7 +15,7 @@ import android.widget.EditText;
 public class Menu extends AppCompatActivity {
 
     String idP;
-    final String EXTRAT_IDP = "id";
+    final String EXTRAT_IDP = "idP";
 
     String method;
     BackgroundTask backgroundTask;
@@ -29,6 +29,7 @@ public class Menu extends AppCompatActivity {
         Intent i = getIntent();
         if(i != null){
             idP = i.getStringExtra(EXTRAT_IDP);
+           //  Log.v("ident", idP);
         }
     }
 
@@ -39,6 +40,7 @@ public class Menu extends AppCompatActivity {
             case R.id.bt_menu_programme :
 
                 Intent i = new Intent(getApplicationContext(),Programme.class);
+                i.putExtra(EXTRAT_IDP,idP);
                 startActivity(i);
                 break;
             case R.id.bt_menu_video :
