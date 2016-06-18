@@ -188,3 +188,4 @@ public class Resultat extends AppCompatActivity implements AdapterView.OnItemSel
         return result;
     }
 }
+
