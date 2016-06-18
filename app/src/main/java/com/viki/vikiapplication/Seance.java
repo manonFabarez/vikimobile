@@ -143,32 +143,28 @@ public class Seance extends AppCompatActivity implements AdapterView.OnItemSelec
         startActivity(homeIntent);
     }
 
-    public void buttonValiderNotationOnClick(View v){
+    public void buttonValiderNotationOnClick(View v) {
         String dateSeance = spinner.getSelectedItem().toString();
         String noteSeance = listNote.getSelectedItem().toString();
         EditText commentaire = (EditText) findViewById(R.id.et_commentaireSeance);
-        String commentaireSeance = commentaire.getText().toString().replace("'","''");
+        String commentaireSeance = commentaire.getText().toString().replace("'", "''");
 
         //Passement des infos dans une tâche en arrière plan : class BackGroundTask
         String method = "noterseance";
         BackgroundTask backgroundTask = new BackgroundTask(this);
 
         //Exécution tache en arrière plan + paramètres necessaires à la taches
-        backgroundTask.execute(method,idP, dateSeance, noteSeance, commentaireSeance);
+        backgroundTask.execute(method, idP, dateSeance, noteSeance, commentaireSeance);
 
         listNote.setSelection(0);
         rv_not.setVisibility(View.INVISIBLE);
         dataAdapter.remove(dateSeance);
         spinner.setSelection(0);
-        if(dataAdapter.getCount()==1)
-        {
-                spinner.setVisibility(View.INVISIBLE);
-                tvnoseance.setVisibility(View.VISIBLE);
-                tvchoiceseance.setVisibility(View.INVISIBLE);
+        if (dataAdapter.getCount() == 1) {
+            spinner.setVisibility(View.INVISIBLE);
+            tvnoseance.setVisibility(View.VISIBLE);
+            tvchoiceseance.setVisibility(View.INVISIBLE);
         }
 
     }
-
-
-
 }
