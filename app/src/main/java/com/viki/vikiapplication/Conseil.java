@@ -31,10 +31,7 @@ public class Conseil extends AppCompatActivity {
 
         conseil.loadUrl("http://virtual-kine.ddns.net/mobile/conseil.php");
 
-
     }
-
-
 
     public void buttonDecoOnClick(View v) {
         Intent homeIntent = new Intent(getApplicationContext(), Connexion.class);
