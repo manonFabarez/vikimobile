@@ -14,7 +14,7 @@
         android:layout_width="20dp"
         android:layout_height="25dp"
         android:id="@+id/bt_deconnexion"
-        android:onClick="buttonOnClick"
+        android:onClick="buttonDecoOnClick"
         android:src="@mipmap/bt_deconnexion"
         android:clickable="true"
         android:scaleType="center"

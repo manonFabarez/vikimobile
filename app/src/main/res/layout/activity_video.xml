@@ -65,5 +65,6 @@
         android:layout_alignParentEnd="true"
         android:textAlignment="center"
         android:textSize="30dp"
-        android:textStyle="normal" />
+        android:textStyle="normal"
+        android:textColor="#8e0000" />
 </RelativeLayout>

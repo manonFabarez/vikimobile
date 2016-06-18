@@ -1,6 +1,8 @@
 package com.viki.vikiapplication;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -170,10 +172,32 @@ public class Video extends AppCompatActivity implements AdapterView.OnItemSelect
     }
 
     public void buttonDecoOnClick(View v) {
-        Intent homeIntent = new Intent(getApplicationContext(), Connexion.class);
-        //Remise à zéro de l'application
-        homeIntent.addCategory(Intent.CATEGORY_HOME);
-        homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(homeIntent);
+        AlertDialog.Builder builder = new AlertDialog.Builder(Video.this);
+        builder.setMessage("Êtes-vous sur de vouloir vous déconnecter ?");
+
+        builder.setCancelable(false);
+        builder.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+
+            public void onClick(DialogInterface dialog, int which) {
+                // TODO Auto-generated method stub
+                Intent homeIntent = new Intent(getApplicationContext(), Connexion.class);
+                //Remise à zéro de l'application
+                homeIntent.addCategory(Intent.CATEGORY_HOME);
+                homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(homeIntent);
+
+            }
+
+
+        });
+
+        builder.setNegativeButton("Non", new DialogInterface.OnClickListener() {
+            public void onClick(final DialogInterface dialog, final int id) {
+
+                dialog.cancel();
+
+            }
+        });
+        builder.show();
     }
 }
