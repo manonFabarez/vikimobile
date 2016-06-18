@@ -529,6 +529,7 @@ public class BackgroundTask extends AsyncTask <String, Void, String>{
                 break;
             case "resultatSeance": //retour du resultat-statistique
                 Intent resultat = new Intent(ctx,Resultat.class);
+                resultat.putExtra(EXTRAT_IDP, idP);
                 resultat.putExtra(EXTRAT_RESULTAT,result);
                 ctx.startActivity(resultat);
                 break;

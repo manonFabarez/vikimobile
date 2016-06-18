@@ -62,6 +62,10 @@ public class Menu extends AppCompatActivity {
                 break;
             case R.id.bt_menu_resultat :
 
+                /*Intent resultat = new Intent(getApplicationContext(),Resultat.class);
+                resultat.putExtra(EXTRAT_IDP,idP);
+                startActivity(resultat);*/
+
                 //Passement des infos dans une tâche en arrière plan : class BackGroundTask
                 method = "resultat";
                 backgroundTask = new BackgroundTask(this);

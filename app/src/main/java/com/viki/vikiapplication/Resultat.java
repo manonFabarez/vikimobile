@@ -22,14 +22,13 @@ import java.util.Locale;
 
 public class Resultat extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
-    WebView graphique;
+    WebView graphique, general;
     Spinner spinner;
     ArrayAdapter<String> dataAdapter;
-    TextView tvProgramme, tvDateProg, tvNbJours;
-    EditText etNomProgramme, etDateDebProg;
     String select;
-    String dateProg;
     final String EXTRAT_RESULTAT = "resultatSeance";
+    String idP ;
+    final String EXTRAT_IDP = "idP";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +58,7 @@ public class Resultat extends AppCompatActivity implements AdapterView.OnItemSel
         //Récupération des éléments de la bdd
         Intent i = getIntent();
         if(i != null){
+            idP = i.getStringExtra(EXTRAT_IDP);
             select = i.getStringExtra(EXTRAT_RESULTAT);
         }
 
@@ -73,21 +73,7 @@ public class Resultat extends AppCompatActivity implements AdapterView.OnItemSel
         if(spinnerChoice.getId() == R.id.spinner_graphique)
         {
             //recuperation des valeurs
-            tvProgramme = (TextView) findViewById(R.id.tv_programme);
             graphique = (WebView) findViewById(R.id.webView);
-            etNomProgramme = (EditText) findViewById(R.id.et_nomProgramme);
-            tvDateProg = (TextView) findViewById(R.id.tv_dateProg);
-            etDateDebProg = (EditText) findViewById(R.id.et_DateDebProg);
-            tvNbJours = (TextView) findViewById(R.id.tv_nbJours);
-
-
-            //Visibilité
-            tvProgramme.setVisibility(View.INVISIBLE);
-            graphique.setVisibility(View.INVISIBLE);
-            etNomProgramme.setVisibility(View.INVISIBLE);
-            tvDateProg.setVisibility(View.INVISIBLE);
-            etDateDebProg.setVisibility(View.INVISIBLE);
-            tvNbJours.setVisibility(View.INVISIBLE);
 
             String chxr="";
             String note="";
@@ -95,38 +81,42 @@ public class Resultat extends AppCompatActivity implements AdapterView.OnItemSel
             String traitement = select.substring(15);
             Log.v("CHRTEST",select);
             String[] ligne = traitement.split(";");
-            for(int z=0; z<ligne.length; z++) {
+            if(ligne.length>1){
+                for(int z=0; z<ligne.length; z++) {
 
-                String[] list = ligne[z].split(",");
-                etNomProgramme.setText(list[1]);
-                etDateDebProg.setText(list[2].substring(0,10));
-                dateProg = list[2].substring(0,10);
-                if(z==ligne.length-1){
+                    String[] list = ligne[z].split(",");
 
-                    if(!list[4].equals("99"))
-                    {
-                        chxr+=list[3].substring(0,10);
-                        note+=list[4];
-                        chm+="d,4d89f9,0,"+z+",12,0";
-                    }
-
-                }else{
-
-                    if(!list[4].equals("99")){
-                        chxr = chxr + list[3].substring(0,10)+"|";
-                        note+=list[4]+",";
-                        chm+="d,4d89f9,0,"+z+",12,0"+"|";
+                    if (!list[1].equals("99")) {
+                        chxr = chxr + list[0].substring(0, 10) + "|";
+                        note += list[1] + ",";
+                        chm += "d,4d89f9,0," + z + ",12,0" + "|";
                     }
 
                 }
-
             }
+
 
             //do this
             // Showing selected spinner item
             if (item == "Evolution de la douleur") {
+
+                //general = (WebView) findViewById(R.id.webView);
+
+                //general.loadUrl("http://virtual-kine.ddns.net/mobile/resultatDouleur.php?idP="+idP);
+
+                if(note.length()>0 && chm.length()>0 && chxr.length()>0)
+                {
+                    note = note.substring(0, note.length()-1);
+                    chxr = chxr.substring(0, chxr.length()-1);
+                    chm = chm.substring(0, chm.length()-1);
+                }
+
+
+                Log.v("CHRTEST", "note finale : "+note);
+                Log.v("CHRTEST","chxr : "+chxr);
+                Log.v("CHRTEST", "chm : "+chm);
                 graphique.setVisibility(View.VISIBLE);
-                graphique.loadUrl("http://chart.apis.google.com/chart?cht=lc&chs=450x330&chd=t:"+note+
+                graphique.loadUrl("http://chart.apis.google.com/chart?cht=lc&chs=550x430&chd=t:"+note+
                         "&chxr=1,0,10&chds=0,10&" +
                         "chco=4d89f9&" +
                         "chxt=x,y&chxl=0:|"+chxr+"&" +
@@ -134,21 +124,9 @@ public class Resultat extends AppCompatActivity implements AdapterView.OnItemSel
                         "chm="+chm+"&chg=0,6.67,5,5&chdl=Note par séance");
             } else {
 
-                //Mise en forme de la date de début du programme pour pouvoir calculer le nombre de jours entre celle-ci et aujourd'hui
-                String[] dateProgSub = dateProg.split("-");
-                int mYear = Integer.parseInt(dateProgSub[0]);
-                int mMonth = Integer.parseInt(dateProgSub[1]);
-                int mDay = Integer.parseInt(dateProgSub[2]);
-                Date dateBase = new Date(mYear, mMonth, mDay);
-                String comparaison = String.valueOf(this.compareDate(dateBase));
-                tvNbJours.setText("Vous êtes soigné depuis "+comparaison+" jours.");
+                general = (WebView) findViewById(R.id.webView);
 
-                tvProgramme.setVisibility(View.VISIBLE);
-                etNomProgramme.setVisibility(View.VISIBLE);
-                tvDateProg.setVisibility(View.VISIBLE);
-                etDateDebProg.setVisibility(View.VISIBLE);
-                tvNbJours.setVisibility(View.VISIBLE);
-
+                general.loadUrl("http://virtual-kine.ddns.net/mobile/resultatGeneral.php?idP="+idP);
             }
         }
     }
