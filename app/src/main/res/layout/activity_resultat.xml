@@ -27,9 +27,9 @@
         android:textAlignment="textStart"
         android:textSize="20dp"
         android:textColor="#8e0000"
-        android:layout_alignBottom="@+id/bt_deconnexion"
         android:layout_centerHorizontal="true"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_marginTop="10dp" />
 
     <ImageButton
         android:layout_width="20dp"

@@ -21,10 +21,10 @@
         android:textStyle="bold"
         android:clickable="true"
         android:contextClickable="true"
+        android:onClick="valider_chgerMdp_OnClick"
         android:layout_below="@+id/et_ChgerMDP_Confirmation"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="73dp"
-        android:onClick="valider_chgerMdp_OnClick" />
+        android:layout_marginTop="30dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -34,21 +34,10 @@
         android:textAlignment="textStart"
         android:textSize="24sp"
         android:textColor="#284051"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/textView11"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="35dp" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/et_ChgerMdp_AncienMDP"
-        android:minHeight="30dp"
-        android:minWidth="350dp"
-        android:layout_below="@+id/TV_ChgerMdp_AncienMDP"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="1dp"
-        android:textColor="#8e0202" />
+        android:layout_marginTop="25dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -57,21 +46,11 @@
         android:id="@+id/tv_ChgerMdp_NewMdp"
         android:textAlignment="textStart"
         android:textSize="24sp"
+        android:textColor="#284051"
         android:layout_below="@+id/et_ChgerMdp_AncienMDP"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="35dp"
-        android:textColor="#284051" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/et_ChgerMdp_NewMDP"
-        android:minHeight="30dp"
-        android:minWidth="350dp"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/tv_ChgerMdp_NewMdp"
         android:layout_alignParentLeft="true"
-        android:textColor="#8e0202" />
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -80,20 +59,65 @@
         android:id="@+id/tv_ChgerMdp_Confirmation"
         android:textAlignment="textStart"
         android:textSize="24sp"
-        android:layout_alignParentStart="true"
+        android:textColor="#284051"
         android:layout_below="@+id/et_ChgerMdp_NewMDP"
         android:layout_alignParentLeft="true"
-        android:layout_marginTop="35dp"
-        android:textColor="#284051" />
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/et_ChgerMDP_Confirmation"
-        android:minHeight="30dp"
-        android:minWidth="350dp"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/et_ChgerMdp_AncienMDP"
+        android:layout_below="@+id/TV_ChgerMdp_AncienMDP"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:textColor="#8e0000"
+        android:layout_marginTop="0dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/et_ChgerMdp_NewMDP"
+        android:layout_below="@+id/tv_ChgerMdp_NewMdp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="0dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:textColor="#8e0000" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/et_ChgerMDP_Confirmation"
         android:layout_below="@+id/tv_ChgerMdp_Confirmation"
         android:layout_alignParentLeft="true"
-        android:textColor="#8e0202" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="0dp"
+        android:textColor="#8e0000" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Nouveau mot de passe pour plus de sécurité"
+        android:id="@+id/textView11"
+        android:textColor="#8e0000"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp" />
 </RelativeLayout>
