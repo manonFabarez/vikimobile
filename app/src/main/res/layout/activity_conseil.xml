@@ -26,10 +26,10 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/bt_deconnexion"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/relativeLayout">
+        android:id="@+id/relativeLayout"
+        android:layout_below="@+id/textView5">
 
         <ScrollView
             android:layout_width="wrap_content"
@@ -37,18 +37,20 @@
             android:id="@+id/scrollView2"
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="5dp" />
 
         <WebView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/webView2"
-            android:layout_below="@+id/scrollView2"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true" />
+            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/scrollView2"
+            android:layout_marginTop="0dp" />
 
     </RelativeLayout>
 
@@ -56,14 +58,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Des petits conseils pour vous"
+        android:text="Quelques conseils"
         android:id="@+id/textView5"
         android:textColor="#8e0000"
         android:textAlignment="center"
         android:textStyle="bold"
         android:textSize="20dp"
         android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp" />
 
 </RelativeLayout>
